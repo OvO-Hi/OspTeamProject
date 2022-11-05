@@ -253,6 +253,16 @@ progress{
     background-color: #ffffff;
     text-align: center;
 }
+.menuname{ /*대표 메뉴 세부 화면 - 메뉴 이름*/
+    float: left;
+    margin-top: 12pt;
+    border: 2px solid #738b5f;
+    width: fit-content;
+    height: auto;
+    text-align: center;
+    padding-left: 4pt;
+    padding-right: 4pt;
+}
 .contents_3{ /*대표 메뉴 세부 화면 - 메뉴 가격, 내용*/
     width:45%;
     text-align: left;
@@ -262,6 +272,7 @@ progress{
 }
 
 
+
 footer {
     padding: 20px;
     text-align: center;
@@ -269,41 +280,3 @@ footer {
     margin-top: 20px;
     clear : both;
 } 
-/*
-
-.container{ 
-    display: flex;
-    flex-direction: column;
-}
-
-#header2{
-    margin-top: 40px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-#btn_top{
-    width: 100%;
-    display: block;
-    float:right;
-}
-
-
-
-progress{
-    border: 2px solid black;
-    border-radius: 5px;
-    -webkit-appearance: none;
-}
-::-webkit-progress-bar{
-    background-color: rgb(255, 255, 255);
-}
-::-webkit-progress-value{
-    background-color: rgb(0, 70, 42);
-}
-
-img{
-    margin: 10px;
-}
-*/

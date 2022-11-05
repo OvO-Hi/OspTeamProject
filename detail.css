@@ -2,6 +2,7 @@ body{ /*모든 화면 - 폰트 적용 */
     font-family: 'Noto Sans KR', sans-serif;
 }
 #logo{ /*모든 화면 - 상단 로고*/
+    font-family: 'Gowun Dodum', sans-serif;
     text-align: center;
     color: #418c2a;
     font-size: 18pt;
@@ -10,9 +11,10 @@ body{ /*모든 화면 - 폰트 적용 */
     cursor: pointer;
 }
 .box1{ /*모든화면 - 배경색과 분리된 하얀 구역*/
+    font-family: 'Noto Sans KR', sans-serif;
     margin:auto;
     padding: 20px 10px;
-    width: 80%;
+    width: 70%;
     height: auto;
     position: relative;
     top: 30px;
@@ -33,6 +35,7 @@ body{ /*모든 화면 - 폰트 적용 */
     margin:10pt;
 }
 .nickname{ /*리뷰 세부 화면 - 닉네임*/
+    font-size: 11pt;
     float: left;
     margin-top: 12pt;
     border: 2px solid #738b5f;
@@ -52,14 +55,15 @@ progress{
     border-radius: 5px;
 }
 .score{ /*리뷰 세부 화면 - 평점*/
-    font-size: 12pt;
+    font-size: 11pt;
     border: 3px solid ffffff;
     margin: 12pt;
     float: left;
     margin-left: 10px;
 }
 .contents{ /*리뷰 세부 화면 - 리뷰 내용*/
-    width:50%;
+    font-size: 11pt;
+    width:60%;
     text-align: left;
     position:absolute;
     left:250pt; /*이미지 사이즈만큼*/
@@ -67,7 +71,6 @@ progress{
 }
 .hash{
     margin-top: 5pt;
-
 }
 .box1_2{ /*리뷰 세부 화면 - 1번째 리뷰*/
     position: relative;
@@ -92,7 +95,7 @@ progress{
 .box2{ /*맛집 세부 화면 - 배경색과 분리된 하얀 구역*/
     margin:auto;
     padding: 90% 30px;
-    width: 80%;
+    width: 70%;
     height: auto;
     position: relative;
     top: 30px;
@@ -127,9 +130,10 @@ progress{
     width:fit-content;
     height: auto;
     text-align: center;
-    font-size: 16pt;
+    font-size: 13pt;
 }
 .box2_5{ /*가게 관련 내용(주소 등) 상자*/
+    font-size: 11pt;
     margin-top: 7pt;
     margin-bottom: 7pt;
     margin-left: 10pt;
@@ -139,6 +143,7 @@ progress{
     padding: 5pt;
 }
 .box2_tag{ /*가게 태그(?) 상자*/
+    font-size: 10.5pt;
     margin-bottom: 7pt;
     margin-left: 10pt;
     border: 2px solid #738b5f;
@@ -173,6 +178,7 @@ progress{
     border-radius: 5px / 5px;
     padding: 5pt;
     text-align: center;
+    font-size: 11pt;
 }
 .box2_8{ /*맛집세부화면 - [리뷰미리보기] 상자*/
     width:fit-content;
@@ -185,12 +191,14 @@ progress{
     padding-left: 10pt;
     padding-right: 10pt;
     text-align: center;
+    font-size: 10.5pt;
 }
 .content_2{ /*리뷰 세부 화면 - 리뷰 내용*/
     width:100%;
     text-align: left;   
     margin-top: 5pt;
     margin-bottom: 5pt;
+    font-size: 10.5pt;
 }
 .box2_9{ /*맛집 세부 화면 - 리뷰 미리보기 상자*/
     position: relative;
@@ -231,7 +239,7 @@ progress{
 .box3{ /*맛집 세부 화면 - 배경색과 분리된 하얀 구역*/
     margin: auto;
     padding: 20px 10px;
-    width: 60%;
+    width: 70%;
     height: auto;
     position: relative;
     top: 30px;
@@ -239,13 +247,14 @@ progress{
     border-radius: 1%;
 }
 #btn3_top{ /*리뷰 세부 화면 - 상단 버튼 구역*/
-    width:60%;
+    width:71%;
     margin: auto;
     text-align: right;
     position:relative;
     background-color: #f3f3f3;
 }
 .box3_1{
+    font-size: 11pt;
     position: relative;
     margin:auto;
     width: 95%;
@@ -262,9 +271,11 @@ progress{
     text-align: center;
     padding-left: 4pt;
     padding-right: 4pt;
+    font-size: 11pt;
 }
 .contents_3{ /*대표 메뉴 세부 화면 - 메뉴 가격, 내용*/
-    width:45%;
+    font-size: 11pt;
+    width:60%;
     text-align: left;
     position:absolute;
     left:250pt; /*이미지 사이즈만큼*/

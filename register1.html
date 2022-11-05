@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>맛집 등록 화면</title> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        *{
+            box-sizing: border-box;
+          }
+          body{
+            margin:0;
+          }
+        .header{
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 20pt;
+            text-align: center;
+            padding: 55px;
+        }
+        .contents0{
+            line-height: 250%;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 10pt;
+            width: 70%;
+            height: 90%;
+            background-color: white;
+            margin:auto;
+            border-radius: 2%;
+            text-align: center;
+
+        }
+        input{
+            background-color: #f1f1f1;
+            padding: 2px;
+            height: 20pt;
+            font-size: 10pt;
+            text-align: left;
+            color: black;
+            box-sizing: border-box;
+            border: 0;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #f1f1f1;
+            margin-top: 20px;
+            clear : both;
+        } 
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <body bgcolor="#f1f1f1">
+        <div class="header">
+            <b style="color:  #00ab67;">YOMOJOMO
+            </b>
+        </div>
+        <div class="contents0"> 
+            <span style="font-size:15pt;">맛집 등록하기</span> <br><br>
+            가게 외부 사진 : <img id="user_image" src="noimage.jpg" alt="" width="23%" height="35%" ><br>
+            <!-- onchange event 걸어주기  -->
+            <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="user_profile_img"> 
+            <br>
+            식당 이름 : <input type = "text" name = "res_name" size="35" ><br/>
+            주소 : <input type="text" id="sample3_address" placeholder="주소">
+            <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>
+            상세 주소: <input type="text" id="sample3_detailAddress" placeholder="상세주소"><br>
+            <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+            </div>
+            전화번호 : <input type = "text" name = "number" size="36"><br/>
+            음식 : <select id = "select-food">
+                <option>한식</option>
+                <option>양식</option>
+                <option>중식</option>
+                <option>일식</option>
+                <option>디저트, 커피</option> 
+            </select> <br/>
+            가격대 : <select id = "price">
+                <option>5,000원 이하</option>
+                <option>5,000-15,000</option>
+                <option>15,000-25,000</option>
+                <option>25,000-30,000</option>
+                <option>30,000-35,000</option>
+                <option>35,000원 이상</option>
+            </select> <br/>
+            주차여부 : <select id = "parking">
+                <option>O</option>
+                <option>X</option>
+            </select><br/>      
+            영업시간 : <input type="time" id="appt" name="appt" min="09:00" max="24:00" required>
+            - <input type="time" id="appt" name="appt" min="09:00" max="24:00" required><br/>    
+          <p><input type="button" value="맛집 등록하기"></p>   
+        </div>        
+    <footer>
+
+      </footer>
+    </body>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="register1.js"></script>
+</html>

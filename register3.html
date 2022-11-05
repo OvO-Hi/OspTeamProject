@@ -1,0 +1,121 @@
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <title>맛집 리뷰 등록 화면</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+            *{
+                box-sizing: border-box;
+              }
+              body{
+                margin:0;
+              }
+            .header{
+                font-family: 'Gowun Dodum', sans-serif;
+                font-size: 20pt;
+                text-align: center;
+                padding: 55px;
+            }
+            .contents0{
+                line-height: 250%;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 10pt;
+                width: 70%;
+                height: 70%;
+                background-color: white;
+                margin:auto; 
+                border-radius: 2%;
+                text-align: center;
+            }
+            #contents1{
+                float: left;
+                height: 100%;
+                width: 50%;
+                font-size: 10pt;
+                text-align: center;
+            }
+            #contents2{
+                float: right;
+                height: 90%;
+                width: 40%; 
+                margin-right: 70px;
+                font-size: 10pt;
+                text-align: left;
+            }  
+            input{
+                background-color: #f1f1f1;
+                padding: 2px;
+                height: 18pt;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 10pt;
+                text-align: left;
+                color: black;
+                box-sizing: border-box;
+                border: 0;
+            }
+            textarea{
+                background-color: #f1f1f1;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 12px;
+                width: 80%;
+                height: 30%;
+                box-sizing: border-box;
+                border: 0;
+            }
+
+            /* Footer */
+            footer {
+                padding: 20px;
+                text-align: center;
+                background: #f1f1f1;
+                margin-top: 20px;
+                clear : both;
+            } 
+        </style>
+    </head>
+    <body bgcolor="#f1f1f1">
+        <div class="header">
+            <b style="color: #00814d;">YOMOJOMO
+            </b>
+        </div>
+
+        <div class="contents0">
+            <br><span style="font-size: 14pt;">리뷰 등록</span><br><br>
+            <div id="contents1">    
+                <img id="user_image" src="noimage.jpg" alt="" width="70%" height="70%" >
+                <!-- onchange event 걸어주기  -->
+                <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="user_profile_img">
+            </div>
+
+         <div id="contents2">
+
+            <div>
+            닉네임 : <input type="text" name="name" size="18"><br/>
+            메뉴 : <input type = "text" name = "menu" size="20"><br/>
+            가격 : <input type = "text" name = "price" size="20"><br>
+            별점 : <input type="radio" name="subject" value="1" checked>1 
+            <input type="radio" name="subject" value="2">2 
+            <input type="radio" name="subject" value="3">3 
+            <input type="radio" name="subject" value="4">4
+            <input type="radio" name="subject"value="5">5 <br/>
+  
+            식사 시간대 : <input type="checkbox" name="time" value="breakfast" checked>아침 
+            <input type="checkbox" name="time" value="lunch">점심 
+            <input type="checkbox" name="time" value="dinner">저녁 
+            <input type="checkbox" name="time"value="etc">기타 <br/>
+            식사 인원 : <input type = "text" name = "people" size="20"> 명  <br/>
+
+            Comment :<br>   
+            <textarea class="textarea"></textarea>
+             </div>
+             
+        </div>
+        
+        </div>
+        <footer>
+          </footer>
+        <script src="register3.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>맛집 대표 메뉴 등록 화면</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+      *{
+          box-sizing: border-box;
+        }
+        body{
+          margin:0;
+        }
+      .header{
+          font-family: 'Gowun Dodum', sans-serif;
+          font-size: 20pt;
+          text-align: center;
+          padding: 55px;
+      }
+      .contents0{
+          line-height: 250%;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 10pt;
+          width: 70%;
+          height: 90%;
+          background-color: white;
+          margin:auto;
+          border-radius: 2%;
+          text-align: center;
+
+      }
+      .contents1{
+        width: 60%;
+        height: 150px;
+        margin: auto;
+        text-align: center;
+        
+      }
+      footer {
+        padding: 20px;
+        text-align: center;
+        background: #f1f1f1;
+        margin-top: 20px;
+        clear : both;
+    } 
+    </style>
+  </head>
+  <body bgcolor="#f1f1f1">
+    <div class="header">
+      <b style="color: #00ab67;">YOMOJOMO
+      </b>
+  </div>
+    <div class="contents0">
+      <p style="font-size:14pt;">대표 메뉴 추가</p>
+      <div class="contents1">
+        <img id="user_image" src="noimage.jpg" alt="" width="170px" height="120px" align="left" style="margin-left: 50px;"><br>
+        메뉴 이름 : <input type="text" name="name" id="메뉴 이름" size="30px"><br>
+        가격 : <input type="text" name="price" id="메뉴 가격" size="35px">
+        <br>
+        <br>
+        <!-- onchange event 걸어주기  -->
+        <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="food_img" style="float:left; margin-left: 50px;">
+      </div>
+    </div>
+    <footer>
+      
+    </footer>
+  </body>
+  <script src="register2.js"></script>
+</html>

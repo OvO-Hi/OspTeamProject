@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>검색 결과 화면 1</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+    
+    body{
+      background-color: #f3f3f3;
+      margin:0;
+    }
+
+    .header{
+      font-family: 'Gowun Dodum', sans-serif;
+      font-size: 20pt;
+      text-align: center;
+      padding: 55px;
+    }
+
+    #logo{ /*모든 화면 - 상단 로고*/
+    text-align: center;
+    color: #418c2a;
+    cursor: pointer;
+  }
+
+    .contents{
+      line-height: 250%;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 10pt;
+      width:70%;
+      height:550px;
+      background-color: white;
+      margin:auto;
+      margin-bottom: 30px;
+      border-radius: 2%;
+      padding: 20px 0px;
+    }
+
+    /*검색창 + 맛집 등록*/
+    .searchbar{
+      margin:10px;
+    }
+
+    .searchbox{
+      font-size: 15pt;
+      color: black;
+      padding:10px 20px;
+      width:700px;
+      background-color: #f3f3f3;
+      float:left;
+    }
+
+    .searchbox a{
+      margin-right: 10px;
+    }
+
+    /*메뉴바*/
+    .menu{
+      text-align: center;
+		  height:34px;
+		  background-color: #738b5f;
+    }
+
+    .menu > ul > li{
+      float:left;
+      width:140px;
+      position: relative;
+      background-color:#738b5f;
+    }
+
+    .menu > ul > li:hover{
+      background-color: #738b5f;
+    }
+
+    .menu > ul > li > ul{
+      width:100px;
+      display:none;
+      position: absolute;
+    }
+
+    .menu > ul > li:hover > ul{
+      padding:0;
+      width:140px;
+      display: block;
+      text-align: center;
+      background-color:#738b5f8f;
+    }
+
+    .menu > ul > li > ul > li:hover {
+      background-color: #738b5f;
+    }
+
+    ul li{
+      list-style: none;
+    }
+
+    a{
+      text-decoration: none;
+      color:white;
+    }
+    
+  /*맛집랭킹*/
+  .lanking{
+    text-align:center;
+    font-size: 12pt;
+    background-color:#f3f3f3;
+    color:black;
+    /*margin:50px 10px;*/
+    padding: 20px 0px; 
+  }
+
+  article{
+    float:left;
+    text-align: center;
+    width:20%;
+    margin:20px;
+  }
+
+  article img{
+    width:70%;
+    height:70%;
+  }
+
+    /*Footer*/
+    footer{
+      padding:20px;
+      text-align: center;
+      background-color: #f3f3f3;
+      margin-top: 20px;
+      clear: both;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div class="header" id="logo" onclick="location.href='search1.html'">
+    <b style="color:#418c2a">YOMOJOMO</b>
+  </div>
+
+  <div class="contents">
+    <div class="searchbar">
+      <form>
+        <div class="searchbox">
+          <a style="color:black;">검색</a>
+          <input type="text" name="search" style="width:580px; height:30px;" placeholder="식당이나 메뉴 이름으로 검색하세요.">
+          <input type="button" name="search" onclick="location.href='search3.html'" style="height:30px; width:50px; margin-top:5px; background-color: #738b5f; border:none; color: white;" value="검색">
+        </div>
+        <div style="float:right; margin:10px;">
+          <div style="margin-top:4px;">
+          </div>
+          <input type="button" onclick="location.href='register1.html'" name="register" style="height:30px; background-color: #738b5f; border:none; color: white;" value="맛집 새로 등록">
+        </div>
+      </form>
+    </div>
+
+    <br><br><br>
+
+    <nav>
+      <div class="menu">
+        <ul>
+          <li><a>음식종류</a>
+            <ul>
+              <li><a href="search2.html">음식종류-1</a></li>
+              <li><a href="search2.html">음식종류-2</a></li>
+              <li><a href="search2.html">음식종류-3</a></li>
+            </ul>
+          </li>
+          <li><a>가격대</a>
+            <ul>
+              <li><a href="search2.html">가격대-1</a></li>
+              <li><a href="search2.html">가격대-2</a></li>
+              <li><a href="search2.html">가격대-3</a></li>
+            </ul>
+          <li><a>거리</a>
+            <ul>
+              <li><a href="search2.html">거리-1</a></li>
+              <li><a href="search2.html">거리-2</a></li>
+              <li><a href="search2.html">거리-3</a></li>
+             </ul>
+          </li>
+          <li><a>평점</a>
+            <ul>
+              <li><a href="search2.html">평점-1</a></li>
+              <li><a href="search2.html">평점-2</a></li>
+              <li><a href="search2.html">평점-3</a></li>
+            </ul>
+          </li>
+          <li style="float:right;"><a href="search5.html">무작위추천</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <p class="lanking">
+      검색 결과
+    </p>
+    <div style="margin:20px">
+      <article>
+        <img src="pic.jpg" alt="lanking image">
+        <p>인생이막창이네</p>
+      </article>
+      <article>
+        <img src="pic.jpg" alt="lanking image">
+        <p>승미곱창</p>
+      </article>
+      <article>
+        <img src="pic.jpg" alt="lanking image">
+        <p>곱창먹방</p>
+      </article>
+    </div>
+
+  </div>
+
+</body>

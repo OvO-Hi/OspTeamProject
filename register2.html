@@ -20,7 +20,7 @@
           font-family: 'Noto Sans KR', sans-serif;
           font-size: 10pt;
           width: 70%;
-          height: 90%;
+          height: 85%;
           background-color: white;
           margin:auto;
           border-radius: 2%;
@@ -28,16 +28,28 @@
 
       }
       .contents1{
-        width: 60%;
-        height: 150px;
-        margin: auto;
+        height: 70%;
+
         text-align: center;
-        
       }
+      contents2{
+        height: 30%;
+      }
+      input{
+        background-color: #f1f1f1;
+        padding: 2px;
+        height: 18pt;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 10pt;
+        text-align: left;
+        color: black;
+        box-sizing: border-box;
+        border: 0;
+    }
       footer {
         padding: 20px;
         text-align: center;
-        background: #f1f1f1;
+        background: #f3f3f3;
         margin-top: 20px;
         clear : both;
     } 
@@ -45,20 +57,21 @@
   </head>
   <body bgcolor="#f1f1f1">
     <div class="header">
-      <b style="color: #00ab67;">YOMOJOMO
-      </b>
-  </div>
+      <img src="YomoJomoLogo.png" width="150px">
+  </div>  
     <div class="contents0">
-      <p style="font-size:14pt;">대표 메뉴 추가</p>
+      <br>
+      
       <div class="contents1">
-        <img id="user_image" src="noimage.jpg" alt="" width="170px" height="120px" align="left" style="margin-left: 50px;"><br>
-        메뉴 이름 : <input type="text" name="name" id="메뉴 이름" size="30px"><br>
-        가격 : <input type="text" name="price" id="메뉴 가격" size="35px">
-        <br>
-        <br>
+        <br>  
+        <img id="user_image" src="noimage.jpg" alt="" width="370px" height="350px"><br>
         <!-- onchange event 걸어주기  -->
-        <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="food_img" style="float:left; margin-left: 50px;">
+       <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="food_img">      
       </div>
+      메뉴 이름 : <input type="text" name="name" id="메뉴 이름" size="45px" style="text-align: center;"><br>
+      가격 : <input type="text" name="price" id="메뉴 가격" size="50px" style="text-align: center;">
+      <br><br>
+      <input type="button" value="대표 메뉴 등록하기" style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" onClick="location.href='#'">
     </div>
     <footer>
       

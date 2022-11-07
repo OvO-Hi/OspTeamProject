@@ -18,7 +18,7 @@
       .contents0{
           line-height: 250%;
           font-family: 'Noto Sans KR', sans-serif;
-          font-size: 10pt;
+          font-size: 12pt;
           width: 70%;
           height: 85%;
           background-color: white;
@@ -28,7 +28,7 @@
 
       }
       .contents1{
-        height: 70%;
+        height: 68%;
 
         text-align: center;
       }
@@ -40,7 +40,7 @@
         padding: 2px;
         height: 18pt;
         font-family: 'Noto Sans KR', sans-serif;
-        font-size: 10pt;
+        font-size: 12pt;
         text-align: left;
         color: black;
         box-sizing: border-box;
@@ -56,22 +56,22 @@
     </style>
   </head>
   <body bgcolor="#f1f1f1">
-    <div class="header">
+    <div class="header" id="logo" onclick="location.href='search1.html'">
       <img src="YomoJomoLogo.png" width="150px">
-  </div>  
+    </div>
     <div class="contents0">
       <br>
       
       <div class="contents1">
         <br>  
-        <img id="user_image" src="noimage.jpg" alt="" width="370px" height="350px"><br>
+        <img id="user_image" src="noimage.jpg" alt="" width="360px" height="340px"><br>
         <!-- onchange event 걸어주기  -->
        <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="food_img">      
       </div>
-      메뉴 이름 : <input type="text" name="name" id="메뉴 이름" size="45px" style="text-align: center;"><br>
-      가격 : <input type="text" name="price" id="메뉴 가격" size="50px" style="text-align: center;">
+      <b>메뉴 이름 :</b><input type="text" name="name" id="메뉴 이름" size="45px" style="text-align: center;"><br>
+      <b>가격 : </b><input type="text" name="price" id="메뉴 가격" size="50px" style="text-align: center;">
       <br><br>
-      <input type="button" value="대표 메뉴 등록하기" style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" onClick="location.href='#'">
+      <input type="button" value="대표 메뉴 등록하기" style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" onClick="location.href='detail3.html'" name="register2">
     </div>
     <footer>
       

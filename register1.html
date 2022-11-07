@@ -18,7 +18,7 @@
         .contents0{
             line-height: 250%;
             font-family: 'Noto Sans KR', sans-serif;
-            font-size: 10pt;
+            font-size: 12pt;
             width: 70%;
             height: 80%;
             background-color: white;
@@ -31,7 +31,7 @@
             padding: 2px;
             height: 18pt;
             font-family: 'Noto Sans KR', sans-serif;
-            font-size: 10pt;
+            font-size: 12pt;
             text-align: left;
             color: black;
             box-sizing: border-box;
@@ -51,9 +51,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
     <body bgcolor="#f3f3f3">
-        <div class="header">
+        <div class="header" id="logo" onclick="location.href='search1.html'">
             <img src="YomoJomoLogo.png" width="150px">
-        </div>
+          </div>
         <div class="contents0"> 
             <div style=" float: left; width: 50%; height:90%;">
                 <br><br>
@@ -65,19 +65,19 @@
 
             <div style=" float: left; width: 50%; height:90%;">
                 <br><br><br><br>
-                식당 이름 : <input type = "text" name = "res_name" size="35" ><br/>
-                 주소 : <input type="text" id="sample6_address" placeholder="주소" size="30">
-                 <input type="button" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
-                 상세주소: <input type="text" id="sample6_detailAddress" placeholder="상세주소" size="35"><br>
-                 전화번호 : <input type = "text" name = "number" size="36"><br/>
-                음식 : <select id = "select-food">
+                <b>식당 이름 : </b><input type = "text" name = "res_name" size="35" ><br/>
+                <b>주소 : </b><input type="text" id="sample6_address" placeholder="주소" size="30">
+                <input type="button" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
+                <b>상세주소 : </b><input type="text" id="sample6_detailAddress" placeholder="상세주소" size="35"><br>
+                <b>전화번호 : </b><input type = "text" name = "number" size="36"><br/>
+                <b>음식 종류: </b><select id = "select-food">
                 <option>한식</option>
                 <option>양식</option>
                 <option>중식</option>
                 <option>일식</option>
                 <option>디저트, 커피</option> 
                  </select> <br/>
-                 가격대 : <select id = "price">
+                <b>가격대 : </b><select id = "price">
                 <option>5,000원 이하</option>
                 <option>5,000-15,000</option>
                 <option>15,000-25,000</option>
@@ -85,15 +85,15 @@
                 <option>30,000-35,000</option>
                 <option>35,000원 이상</option>
                   </select> <br/>
-                  주차여부 : <select id = "parking">
+                <b>주차 여부: </b><select id = "parking">
                 <option>O</option>
                 <option>X</option>
                 </select><br/>      
-               영업시간 : <input type="time" id="appt" name="appt" min="09:00" max="24:00" required>
+               <b>영업 시간: </b><input type="time" id="appt" name="appt" min="09:00" max="24:00" required>
                - <input type="time" id="appt" name="appt" min="09:00" max="24:00" required><br/><br> 
             </div>
             <br>
-            <input type="button" value="맛집 등록하기" style="background-color: #738b5f; height:30px; width:105px; text-align:center; color:white;" onClick="location.href='#'"> 
+            <input type="button" value="맛집 등록하기" style="background-color: #738b5f; height:30px; width:105px; text-align:center; color:white;" onClick="location.href='search1.html'" name="register1"> 
 
         </div>        
     <footer>

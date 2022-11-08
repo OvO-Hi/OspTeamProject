@@ -35,7 +35,7 @@ body{ /*모든 화면 - 폰트 적용 */
     margin:10pt;
 }
 .nickname{ /*리뷰 세부 화면 - 닉네임*/
-    font-size: 11pt;
+    font-size: 12pt;
     float: left;
     margin-top: 12pt;
     border-radius: 2px / 2px;
@@ -58,14 +58,14 @@ progress{
     border-radius: 5px;
 }
 .score{ /*리뷰 세부 화면 - 평점*/
-    font-size: 11pt;
+    font-size: 11.5pt;
     border: 3px solid ffffff;
     margin: 12pt;
     float: left;
     margin-left: 10px;
 }
 .contents{ /*리뷰 세부 화면 - 리뷰 내용*/
-    font-size: 11pt;
+    font-size: 12pt;
     width:60%;
     text-align: left;
     position:absolute;
@@ -135,10 +135,9 @@ progress{
     width:fit-content;
     height: auto;
     text-align: center;
-    font-size: 13pt;
+    font-size: 14pt;
 }
 .box2_5{ /*가게 관련 내용(주소 등) 상자*/
-    font-size: 11pt;
     margin-top: 7pt;
     margin-bottom: 7pt;
     margin-left: 10pt;
@@ -147,9 +146,9 @@ progress{
     background-color: #ebebeb;
     border-radius: 5px / 5px;
     padding: 5pt;
+    font-size: 12pt;
 }
 .box2_tag{ /*가게 태그(?) 상자*/
-    font-size: 10.5pt;
     margin-bottom: 7pt;
     margin-left: 10pt;
     border: none;
@@ -163,6 +162,7 @@ progress{
     height: auto;
     text-align: center;
     float: left;
+    font-size: 12pt;
 }
 .box2_6{/*맛집세부화면 - 지도 넣는 상자*/
     margin-left: 10pt;
@@ -190,7 +190,7 @@ progress{
     padding: 5pt;
     padding-bottom: 10pt;
     text-align: center;
-    font-size: 11pt;
+    font-size: 12.5pt;
 }
 .box2_8{ /*맛집세부화면 - [리뷰미리보기] 상자*/
     width:fit-content;
@@ -203,10 +203,9 @@ progress{
     padding-left: 10pt;
     padding-right: 10pt;
     text-align: center;
-    font-size: 10.5pt;
+    font-size: 11pt;
 }
 .nickname2{ /*리뷰 세부 화면 - 닉네임*/
-    font-size: 10.5pt;
     float: left;
     margin-top: 12pt;
     border: none;
@@ -217,6 +216,7 @@ progress{
     height: auto;
     text-align: center;
     padding: 1px;
+    font-size: 11pt;
 }
 .content_2{ /*맛집 세부 화면 - 리뷰 내용*/
     width:97%;
@@ -224,7 +224,7 @@ progress{
     margin-top: 5pt;
     margin-bottom: 5pt;
     padding-left: 2pt;
-    font-size: 10.5pt;
+    font-size: 11pt;
 }
 .box2_9{ /*맛집 세부 화면 - 리뷰 미리보기 상자*/
     position: relative;
@@ -301,10 +301,10 @@ progress{
     padding-right: 7pt;
     padding-top: 2pt;
     padding-bottom: 3pt;
-    font-size: 11pt;
+    font-size: 12pt;
 }
 .contents_3{ /*대표 메뉴 세부 화면 - 메뉴 가격, 내용*/
-    font-size: 11pt;
+    font-size: 12pt;
     width:60%;
     text-align: left;
     position:absolute;

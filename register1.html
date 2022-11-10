@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>맛집 등록 화면</title> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        *{
+            box-sizing: border-box;
+          }
+          body{
+            margin:0;
+          }
+        .header{
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 20pt;
+            text-align: center;
+            padding: 55px;
+        }
+        .contents0{
+            line-height: 250%;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            width: 70%;
+            height: 80%;
+            background-color: white;
+            margin:auto;
+            border-radius: 2%;
+            text-align: center;
+        }
+        input{
+            background-color: #f1f1f1;
+            padding: 2px;
+            height: 18pt;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            text-align: left;
+            color: black;
+            box-sizing: border-box;
+            border: 0;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #f1f1f1;
+            margin-top: 20px;
+            clear : both;
+        } 
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <body bgcolor="#f3f3f3">
+        <div class="header" id="logo" onclick="location.href='index.html'">
+            <img src="YomoJomoLogo.png" width="150px">
+          </div>
+        <div class="contents0"> 
+            <div style=" float: left; width: 50%; height:90%;">
+                <br><br>
+                <img id="user_image" src="noimage.jpg" alt="" width="400px" height="400px" style="text-align: center;" ><br>
+               <!-- onchange event 걸어주기  -->
+               가게 외부 사진 : <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="user_profile_img"> 
+            <br>
+            </div>
+
+            <div style=" float: left; width: 50%; height:90%;">
+                <br><br><br><br>
+                <b>식당 이름 : </b><input type = "text" name = "res_name" size="35" ><br/>
+                <b>주소 : </b><input type="text" id="sample6_address" placeholder="주소" size="30">
+                <input type="button" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
+                <b>상세주소 : </b><input type="text" id="sample6_detailAddress" placeholder="상세주소" size="35"><br>
+                <b>전화번호 : </b><input type = "text" name = "number" size="36"><br/>
+                <b>음식 종류: </b><select id = "select-food">
+                <option>한식</option>
+                <option>양식</option>
+                <option>중식</option>
+                <option>일식</option>
+                <option>디저트, 커피</option> 
+                 </select> <br/>
+                <b>가격대 : </b><select id = "price">
+                <option>5,000원 이하</option>
+                <option>5,000-15,000</option>
+                <option>15,000-25,000</option>
+                <option>25,000-30,000</option>
+                <option>30,000-35,000</option>
+                <option>35,000원 이상</option>
+                  </select> <br/>
+                <b>주차 여부: </b><select id = "parking">
+                <option>O</option>
+                <option>X</option>
+                </select><br/>      
+               <b>영업 시간: </b><input type="time" id="appt" name="appt" min="09:00" max="24:00" required>
+               - <input type="time" id="appt" name="appt" min="09:00" max="24:00" required><br/><br> 
+            </div>
+            <br>
+            <input type="button" value="맛집 등록하기" style="background-color: #738b5f; height:30px; width:105px; text-align:center; color:white;" onClick="location.href='search1.html'" name="register1"> 
+
+        </div>        
+    <footer>
+
+      </footer>
+    </body>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="register1.js"></script>
+</html>

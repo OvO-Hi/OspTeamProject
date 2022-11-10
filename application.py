@@ -49,6 +49,7 @@ def register1():
 def reg_restaurant_submit():
     image_file1=request.files["res_img"]
     image_file1.save("static/image/{}".format(image_file1.filename))
+    save1=request.form["res_name"]+"_"+image_file1.filename
     data1=request.form
     return render_template("result1.html", data=data1)
 
@@ -61,6 +62,7 @@ def register2():
 def reg_menu_submit():
     image_file2=request.files["food_img"]
     image_file2.save("static/image/{}".format(image_file2.filename))
+    save2=request.form["menu_name"]+"_"+image_file2.filename
     data2=request.form
     return render_template("result2.html", data=data2)
 
@@ -73,6 +75,7 @@ def register3():
 def reg_review_submit():
     image_file3=request.files["review_img"]
     image_file3.save("static/image/{}".format(image_file3.filename))
+    save3=request.form["rev_menu"]+"_"+image_file2.filename
     data3 = request.form
     return render_template("result3.html", data=data3)
 

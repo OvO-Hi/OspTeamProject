@@ -68,12 +68,19 @@
                 <b>식당 이름 : </b><input type = "text" name = "res_name" size="35" ><br/>
                 <b>주소 : </b><input type="text" name="res_addr" id="res_addr" placeholder="주소" size="30" readonly>
                 <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>
-                <b>상세주소 : </b><input type="text" name="res_addr_detail" id="res_addr_detail" placeholder="상세주소" size="35"><br>
+                <b>상세주소 : </b><input type="text" name="res_addr_detail" id="res_addr_detail" placeholder="상세주소" size="36"><br>
                 <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
                     <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
                 </div>
                 <b>상세주소 : </b><input type="text" id="sample6_detailAddress" placeholder="상세주소" size="35"><br>
-                <b>전화번호 : </b><input type = "text" name = "number" size="36"><br/>
+                <b>전화번호 : </b><input type = "text" name = "number" size="36" placeholder="010-xxxx-xxxx"><br/>
+                <b>홈페이지 URL : </b><input type = "text" name = "res_site" size="32"><br/>
+                <b>구역 : </b><select name="res_area" id = "select-area" required><br/>
+                <option>교내</option>
+                <option>이대 정문 (이대역-신촌 기차역)</option>
+                <option>이대 후문 (후문-세브란스)</option>
+                <option>신촌</option>
+                </select> <br/>
                 <b>음식 종류: </b><select id = "select-food">
                 <option>한식</option>
                 <option>양식</option>

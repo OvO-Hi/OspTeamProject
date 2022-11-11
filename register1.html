@@ -55,57 +55,57 @@
             <img src="YomoJomoLogo.png" width="150px">
           </div>
         <div class="contents0"> 
-            <div style=" float: left; width: 50%; height:90%;">
+            <form method="post" action="/result.html" enctype="multipart/form-data">
+            	<div style="float: left; width: 50%; height:90%;">
                 <br><br>
-                <img id="user_image" src="noimage.jpg" alt="" width="400px" height="400px" style="text-align: center;" ><br>
-               <!-- onchange event 걸어주기  -->
-               가게 외부 사진 : <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="user_profile_img"> 
-            <br>
-            </div>
-
-            <div style=" float: left; width: 50%; height:90%;">
-                <br><br><br><br>
-                <b>식당 이름 : </b><input type = "text" name = "res_name" size="35" ><br/>
-                <b>주소 : </b><input type="text" name="res_addr" id="res_addr" placeholder="주소" size="30" readonly>
-                <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>
-                <b>상세주소 : </b><input type="text" name="res_addr_detail" id="res_addr_detail" placeholder="상세주소" size="36"><br>
-                <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-                    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-                </div>
-                <b>상세주소 : </b><input type="text" id="sample6_detailAddress" placeholder="상세주소" size="35"><br>
-                <b>전화번호 : </b><input type = "text" name = "number" size="36" placeholder="010-xxxx-xxxx"><br/>
-                <b>홈페이지 URL : </b><input type = "text" name = "res_site" size="32"><br/>
-                <b>구역 : </b><select name="res_area" id = "select-area" required><br/>
-                <option>교내</option>
-                <option>이대 정문 (이대역-신촌 기차역)</option>
-                <option>이대 후문 (후문-세브란스)</option>
-                <option>신촌</option>
-                </select> <br/>
-                <b>음식 종류: </b><select id = "select-food">
-                <option>한식</option>
-                <option>양식</option>
-                <option>중식</option>
-                <option>일식</option>
-                <option>디저트, 커피</option> 
-                 </select> <br/>
-                <b>가격대 : </b><select id = "price">
-                <option>5,000원 이하</option>
-                <option>5,000-15,000</option>
-                <option>15,000-25,000</option>
-                <option>25,000-30,000</option>
-                <option>30,000-35,000</option>
-                <option>35,000원 이상</option>
-                  </select> <br/>
-                <b>주차 여부: </b><select id = "parking">
-                <option>O</option>
-                <option>X</option>
-                </select><br/>      
-               <b>영업 시간: </b><input type="time" id="appt" name="appt" min="09:00" max="24:00" required>
-               - <input type="time" id="appt" name="appt" min="09:00" max="24:00" required><br/><br> 
-            </div>
-            <br>
-            <input type="button" value="맛집 등록하기" style="background-color: #738b5f; height:30px; width:105px; text-align:center; color:white;" onClick="location.href='search1.html'" name="register1"> 
-
+                <img id="user_image" src="/static/noimage.jpg" alt="" width="400px" height="400px" style="text-align: center;" ><br>
+                <!-- onchange event 걸어주기  -->
+                가게 외부 사진 : <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="res_img" id="user_profile_img" /> 
+            	<br>
+            	</div>
+                
+            	<div style="float:left; width: 50%; height:90%;">
+                	<br><br><br><br>
+                	<b>식당 이름 : </b><input type = "text" name = "res_name" size="35" required><br/>
+                	<b>주소 : </b><input type="text" name="res_addr" id="res_addr" placeholder="주소" size="30" readonly required>
+                    <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>
+                	<b>상세주소 : </b><input type="text" name="res_addr_detail" id="res_addr_detail" placeholder="상세주소" size="36"><br>
+                    <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+                    </div>
+                    
+                	<b>전화번호 : </b><input type = "text" name = "res_tel" size="36" placeholder="010-xxxx-xxxx"><br/>
+                    <b>홈페이지 URL : </b><input type = "text" name = "res_site" size="32"><br/>
+                    <b>구역 : </b><select name="res_area" id = "select-area" required><br/>
+                    <option>교내</option>
+                    <option>이대 정문 (이대역-신촌 기차역)</option>
+                	<option>이대 후문 (후문-세브란스)</option>
+                	<option>신촌</option>
+                    </select> <br/>
+                	<b>음식 종류: </b><select name="res_category" id = "select-food">
+                	<option>한식</option>
+                	<option>양식</option>
+                	<option>중식</option>
+                	<option>일식</option>
+                	<option>디저트, 커피</option> 
+                 	</select> <br/>
+                	<b>가격대 : </b><select name="res_price" id = "price" required>
+                	<option>5,000원 이하</option>
+                	<option>5,000원-10,000원</option>
+                	<option>10,000원-15,000원</option>
+                	<option>15,000원-20,000원</option>
+                	<option>20,000원 이상</option>
+                  	</select> <br/>
+                	<b>주차 여부: </b><select name="parking" id = "parking">
+                	<option>O</option>
+                	<option>X</option>
+                	</select><br/>      
+                	<b>영업 시간: </b><input type="time" id="appt" name="appt_open" min="07:00" max="24:00" required>
+                	<input type="time" id="appt" name="appt_close" min="09:00" max="24:00" required><br/><br> 
+            	</div>
+            	<br>
+            	<input name="register" type="submit" value="맛집 등록하기" style="background-color: #738b5f; height:30px; width:105px; text-align:center; color:white;" onClick="location.href='result.html'" name="register1"> 
+        	</form>
         </div>        
     <footer>
 

@@ -45,7 +45,7 @@ def search5():
 def register1():
     return render_template("register1.html")
 
-@application.route("/result1.html", methods=['POST'])
+@application.route("/result.html", methods=['POST'])
 def reg_restaurant_submit():
     image_file1=request.files["res_img"]
     image_file1.save("static/image/{}".format(image_file1.filename))
@@ -53,7 +53,7 @@ def reg_restaurant_submit():
     data1=request.form
     
     print(data1["res_name"], data1["res_addr"], data1["res_addr_detail"], data1["res_tel"], data1["res_site"], data1["res_area"], data1["res_category"], data1["res_price"], data1["parking"], data1["appt_open"], data1["appt_close"])
-    return render_template("result1.html", data=data1)
+    return render_template("result.html", data=data1)
 
 #대표메뉴 입력받기 - register2.html
 @application.route("/register2.html")

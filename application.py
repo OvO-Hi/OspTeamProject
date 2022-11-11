@@ -51,6 +51,8 @@ def reg_restaurant_submit():
     image_file1.save("static/image/{}".format(image_file1.filename))
     save1=request.form["res_name"]+"_"+image_file1.filename
     data1=request.form
+    
+    print(data1["res_name"], data1["res_addr"], data1["res_addr_detail"], data1["res_tel"], data1["res_site"], data1["res_area"], data1["res_category"], data1["res_price"], data1["parking"], data1["appt_open"], data1["appt_close"])
     return render_template("result1.html", data=data1)
 
 #대표메뉴 입력받기 - register2.html
@@ -64,6 +66,8 @@ def reg_menu_submit():
     image_file2.save("static/image/{}".format(image_file2.filename))
     save2=request.form["menu_name"]+"_"+image_file2.filename
     data2=request.form
+    
+    print(data2["menu_name"], data2["menu_price"])
     return render_template("result2.html", data=data2)
 
 #리뷰 등록 화면 -register3.html
@@ -77,6 +81,8 @@ def reg_review_submit():
     image_file3.save("static/image/{}".format(image_file3.filename))
     save3=request.form["rev_menu"]+"_"+image_file3.filename
     data3 = request.form
+    
+    print(data3["rev_name"], data3["rev_menu"], data3["rev_price"], data3["rev_score"], data3["rev_time"], data3["rev_memo"])
     return render_template("result3.html", data=data3)
 
 

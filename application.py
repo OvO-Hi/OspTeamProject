@@ -75,7 +75,7 @@ def register3():
 def reg_review_submit():
     image_file3=request.files["review_img"]
     image_file3.save("static/image/{}".format(image_file3.filename))
-    save3=request.form["rev_menu"]+"_"+image_file2.filename
+    save3=request.form["rev_menu"]+"_"+image_file3.filename
     data3 = request.form
     return render_template("result3.html", data=data3)
 

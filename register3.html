@@ -93,7 +93,7 @@
                 <div id="contents1">    
                 	<img id="user_image" src="/static/noimage.jpg" alt="" width="73%" height="80%" >
                 	<!-- onchange event 걸어주기  -->
-                	<input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="review_img" id="user_profile_img">
+                	<input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="review_img" id="user_profile_img" requried>
             	</div>
                 <!-- <div>
                     <label for="img">대표 이미지: </label>
@@ -102,7 +102,7 @@
                 
                 <div id="contents2">
             		<br>
-            		<b>닉네임 : </b><input type="text" name="rev_name" size="18"><br/>
+            		<b>닉네임 : </b><input type="text" name="rev_name" size="18" requried><br/>
             		<b>메뉴 : </b><input type = "text" name = "rev_menu" size="20" required><br/>
             		<b>가격 : </b><input type = "text" name = "rev_price" size="18" required> 원<br>
             		<b>별점 : </b><input type="radio" name="rev_score" value="1" checked>1 

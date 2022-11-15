@@ -57,15 +57,15 @@
         <div class="contents0"> 
             <form method="post" action="/result.html" enctype="multipart/form-data">
             	<div style="float: left; width: 50%; height:90%;">
-                <br><br>
+                <br><br><br>
                 <img id="user_image" src="/static/noimage.jpg" alt="" width="400px" height="400px" style="text-align: center;" ><br>
                 <!-- onchange event 걸어주기  -->
                 가게 외부 사진 : <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="res_img" id="user_profile_img" /> 
             	<br>
             	</div>
                 
-            	<div style="float:left; width: 50%; height:90%;">
-                	<br><br><br><br>
+            	<div style="float:left; width: 50%; height:90%; text-align:left">
+                	<br><br><br>
                 	<b>식당 이름 : </b><input type = "text" name = "res_name" size="35" required><br/>
                 	<b>주소 : </b><input type="text" name="res_addr" id="res_addr" placeholder="주소" size="30" readonly required>
                     <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>

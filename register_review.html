@@ -85,11 +85,14 @@
         <div class="header" id="logo" onclick="location.href='index.html'">
             <img src="YomoJomoLogo.png" width="150px">
           </div>
+        
+        <center><b><label style="text-align: center" for="name">{{data.res_name}}</label></b></center><br><br>
 
         <div class="contents0">
             <br>
             <br>
             <form method="post" action="/result3.html" enctype="multipart/form-data">
+                <input type="hidden" name="res_name" value="{{data.res_name}}">
                 <div id="contents1">    
                 	<img id="user_image" src="/static/noimage.jpg" alt="" width="80%" height="87%" >
                 	<!-- onchange event 걸어주기  -->
@@ -137,7 +140,7 @@
                 		<input type="checkbox" name="rev_amount"value="적음">적음　<br/>
             		</div>
             		<div style="float: left; width: 23%; height: 70%">
-                		<b style="font-size: 13pt;">비건 여부</b><br>
+                		<b style="font-size: 13pt;">비건 메뉴</b><br>
                 		<input type="checkbox" name="rev_vegan" value="O">O<br>
                 		<input type="checkbox" name="rev_vegan" value="X">X<br>
             		</div>
@@ -159,7 +162,18 @@
           
         </footer>
         
-        <script src="register3.js"></script>
+        <script>
+            function PreviewImage() {
+                // 파일리더 생성
+                var preview = new FileReader();
+                preview.onload = function (e) {
+                    // img id 값 
+                    document.getElementById("user_image").src = e.target.result;
+                };
+                // input id 값
+                preview.readAsDataURL(document.getElementById("user_profile_img").files[0]);
+            };
+        </script>
     </body>
 
 </html>

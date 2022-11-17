@@ -40,50 +40,67 @@ def search5():
     return render_template("search5.html")
 
 
-#식당 입력 받기 - register1.html
-@application.route("/register1.html")
-def register1():
-    return render_template("register1.html")
+#식당 입력 받기 - register_restaurant.html
+@application.route("/register_restaurant.html")
+def reg_register():
+    return render_template("register_restaurant.html")
 
 @application.route("/result.html", methods=['POST'])
 def reg_restaurant_submit():
-    image_file1=request.files["res_img"]
-    image_file1.save("static/image/{}".format(image_file1.filename))
-    save1=request.form["res_name"]+"_"+image_file1.filename
-    data1=request.form
+    image_file=request.files['res_img']
+    image_file.save("static/image/{}".format(image_file.filename))
+    data=request.form
     
-    print(data1["res_name"], data1["res_addr"], data1["res_addr_detail"], data1["res_tel"], data1["res_site"], data1["res_area"], data1["res_category"], data1["res_price"], data1["parking"], data1["appt_open"], data1["appt_close"])
-    return render_template("result.html", data=data1)
+    print(data)
+    
+    #중복 확인
+    
+    if DB.insert_restaurant(data['res_name'], data, image_file.filename):
+        return render_template("result.html", data=data, image_path="static/image/"+image_file.filename)
+    else:
+        return "Restaurant name already exists!"
 
-#대표메뉴 입력받기 - register2.html
-@application.route("/register2.html")
-def register2():
-    return render_template("register2.html")
+#대표메뉴 입력받기 - register_menu.html
+@application.route("/register_menu.html")
+def reg_menu():
+    data=request.form
+    print(data)
+    return render_template("register2.html", data=data)
 
 @application.route("/result2.html", methods=['POST'])
 def reg_menu_submit():
-    image_file2=request.files["food_img"]
-    image_file2.save("static/image/{}".format(image_file2.filename))
-    save2=request.form["menu_name"]+"_"+image_file2.filename
-    data2=request.form
-    
-    print(data2["menu_name"], data2["menu_price"])
-    return render_template("result2.html", data=data2)
+    image_file=request.files['food_img']
+    image_file.save("static/image/{}".format(image_file.filename))
+    data=request.form
+    print(data)
 
-#리뷰 등록 화면 -register3.html
-@application.route("/register3.html")
-def register3():
-    return render_template("register3.html")
+    #중복 확인
+
+    if DB.insert_menu(data['menu_name'], data, image_file.filename):
+        return render_template("result2.html", data=data, image_path="static/image/"+image_file.filename)
+    else:
+        return "Menu already exists!"
+
+#리뷰 등록 화면 - register_review.html
+@application.route("/register_review.html")
+def reg_review():
+    data=request.form
+    print(data)
+    return render_template("register_review.html", data=data)
 
 @application.route("/result3.html", methods=['POST'])
 def reg_review_submit():
-    image_file3=request.files["review_img"]
-    image_file3.save("static/image/{}".format(image_file3.filename))
-    save3=request.form["rev_menu"]+"_"+image_file3.filename
-    data3 = request.form
+    image_file=request.files['review_img']
+    image_file.save("static/image/{}".format(image_file.filename))
+    data=request.form
     
-    print(data3["rev_name"], data3["rev_menu"], data3["rev_price"], data3["rev_score"], data3["rev_time"], data3["rev_memo"])
-    return render_template("result3.html", data=data3)
+    print(data)
+
+    #중복 확인
+    if DB.insert_review(data['rev_name'], data, image_file.filename):
+        return render_template("result3.html", data=data, image_path="static/image/"+image_file.filename)
+    else:
+        return "Review name already exists!"
 
 
 if __name__ == "__main__":

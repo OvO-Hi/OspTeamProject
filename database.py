@@ -48,17 +48,16 @@ class DBhandler:
         }
         
         #중복 확인
-        name = data['res_name'] + '_' + name
         
-        if self.menu_duplicate_check(name):
-            self.db.child("menu").child(name).set(menu_info)
+        if self.menu_duplicate_check(data, name):
+            self.db.child("menu").child(data['res_name']).child(name).set(menu_info)
             print(data, img_path)
             return True
         else:
             return False
     
-    def menu_duplicate_check(self, name):
-        menus = self.db.child("menu").get()
+    def menu_duplicate_check(self, data, name):
+        menus = self.db.child("menu").child(data['res_name']).get()
         for menu in menus.each():
             if menu.key() == name:
                 return False
@@ -83,22 +82,8 @@ class DBhandler:
             "img_path": img_path
         }
         
-        #중복 확인
-        name = data['res_name'] + '_' + name
-    
-        if self.review_duplicate_check(name):
-            self.db.child("review").child(name).set(review_info)
-            print(data, img_path)
-            return True
-        else:
-            return False
-    
-    def review_duplicate_check(self, name):
-        reviews = self.db.child("review").get()
-        for rev in reviews.each():
-            if rev.key() == name:
-                return False
-        return True
+        self.db.child("review").child(name).child(data['res_name']).push(review_info)
+        print(data, img_path)
     
     
         

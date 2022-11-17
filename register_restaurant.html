@@ -57,15 +57,15 @@
         <div class="contents0"> 
             <form method="post" action="/result.html" enctype="multipart/form-data">
             	<div style="float: left; width: 50%; height:90%;">
-                <br><br><br>
+                <br><br>
                 <img id="user_image" src="/static/noimage.jpg" alt="" width="400px" height="400px" style="text-align: center;" ><br>
                 <!-- onchange event 걸어주기  -->
                 가게 외부 사진 : <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="res_img" id="user_profile_img" /> 
             	<br>
             	</div>
                 
-            	<div style="float:left; width: 50%; height:90%; text-align:left">
-                	<br><br><br>
+            	<div style="float:right; width: 50%; height:90%; text-align:left;">
+                	<br><br>
                 	<b>식당 이름 : </b><input type = "text" name = "res_name" size="35" required><br/>
                 	<b>주소 : </b><input type="text" name="res_addr" id="res_addr" placeholder="주소" size="30" readonly required>
                     <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>
@@ -112,7 +112,6 @@
       </footer>
     </body>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="register1.js"></script>
     <script>
         // 우편번호 찾기 찾기 화면을 넣을 element
             var element_wrap = document.getElementById('wrap');
@@ -162,6 +161,17 @@
                 // iframe을 넣은 element를 보이게 한다.
                 element_wrap.style.display = 'block';
             }
+        
+        function PreviewImage() {
+            // 파일리더 생성 
+            var preview = new FileReader();
+            preview.onload = function (e) {
+                // img id 값 
+                document.getElementById("user_image").src = e.target.result;
+            };
+            // input id 값 
+            preview.readAsDataURL(document.getElementById("user_profile_img").files[0]);
+        };
         </script>
       
 </html>

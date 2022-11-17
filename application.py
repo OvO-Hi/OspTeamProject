@@ -96,11 +96,8 @@ def reg_review_submit():
     
     print(data)
 
-    #중복 확인
-    if DB.insert_review(data['rev_name'], data, image_file.filename):
-        return render_template("result3.html", data=data, image_path="static/image/"+image_file.filename)
-    else:
-        return "Review name already exists!"
+    DB.insert_review(data['rev_name'], data, image_file.filename)
+    return render_template("result3.html", data=data, image_path="static/image/"+image_file.filename)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>맛집 대표 메뉴 등록 화면</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+      *{
+          box-sizing: border-box;
+        }
+        body{
+          margin:0;
+        }
+      .header{
+          font-family: 'Gowun Dodum', sans-serif;
+          font-size: 20pt;
+          text-align: center;
+          padding: 55px;
+      }
+      .contents0{
+          line-height: 250%;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 12pt;
+          width: 70%;
+          height: 85%;
+          background-color: white;
+          margin:auto;
+          border-radius: 2%;
+          text-align: center;
+
+      }
+      .contents1{
+        height: 68%;
+
+        text-align: center;
+      }
+      contents2{
+        height: 30%;
+      }
+      input{
+        background-color: #f1f1f1;
+        padding: 2px;
+        height: 18pt;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 12pt;
+        text-align: left;
+        color: black;
+        box-sizing: border-box;
+        border: 0;
+    }
+      footer {
+        padding: 20px;
+        text-align: center;
+        background: #f3f3f3;
+        margin-top: 20px;
+        clear : both;
+    } 
+    </style>
+  </head>
+  <body bgcolor="#f1f1f1">
+    <div class="header" id="logo" onclick="location.href='index.html'">
+      <img src="YomoJomoLogo.png" width="150px">
+    </div>
+    <form method="post" action="/result2.html" enctype="multipart/form-data">
+          <div class="contents0">
+              <br>
+              <b><label for="name">맛집 이름: {{data.res_name}}</label></b>
+              <input type="hidden" name="res_name" value="{{data.res_name}}">
+              <br>
+                  <div class="contents1">
+                      <br>
+                      <img id="user_image" src="/static/noimage.jpg" alt="no image" width="360px" height="340px"><br>
+                      <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" id="food_img" name="food_img">
+                  </div>
+                  <b>메뉴 이름 :</b><input type="text" name="menu_name" id="메뉴 이름" size="45px" style="text-align: center;"><br>
+                  <b>가격 : </b><input type="text" name="menu_price" id="메뉴 가격" size="46px" style="text-align: center;"> 원
+                  <br><br>
+                  <input type="submit" value="대표 메뉴 등록하기" onClick="location.href='result2.html'"  style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" name="register2">
+          </div>
+      </form>
+    <footer>
+      
+    </footer>
+    
+    <script>
+          function PreviewImage() {
+              // 파일리더 생성 
+              var preview = new FileReader();
+              preview.onload = function (e) {
+                  // img id 값 
+                  document.getElementById("user_image").src = e.target.result;
+              };
+              // input id 값 
+              preview.readAsDataURL(document.getElementById("food_img").files[0]);
+          };
+     </script>
+  </body>
+</html>

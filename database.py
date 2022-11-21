@@ -78,7 +78,11 @@ class DBhandler:
             "rev_headcount": data['rev_headcount'],
             "rev_amount": data['rev_amount'],
             "rev_vegan": data['rev_vegan'],
-            "rev_etc": data['rev_etc'],
+            "rev_etc_interior": data['rev_etc_interior'],
+            "rev_etc_service": data['rev_etc_service'],
+            "rev_etc_kind": data['rev_etc_kind'],
+            "rev_etc_tasty": data['rev_etc_tasty'],
+            "rev_etc_mood": data['rev_etc_mood'],
             "img_path": img_path
         }
         

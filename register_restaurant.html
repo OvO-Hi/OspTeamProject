@@ -1,175 +1,187 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>맛집 리뷰 등록 화면</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-            *{
-                box-sizing: border-box;
-              }
-              body{
-                margin:0;
-              }
-            .header{
-                font-family: 'Gowun Dodum', sans-serif;
-                font-size: 20pt;
-                text-align: center;
-                padding: 55px;
-            }
-            .contents0{
-                line-height: 250%;
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 12pt;
-                width: 70%;
-                height: 100%;
-                background-color: white;
-                margin:auto; 
-                border-radius: 2%;
-                text-align: center;
-            }
-            #contents1{
-                float: left;
-                height: 55%;
-                width: 50%;
-                font-size: 12pt;
-                text-align: center;
-                position: static;
-            }
-            #contents2{
-                float: right;
-                height: 55%;
-                width: 40%; 
-                margin-right: 70px;
-                font-size: 12pt;
-                text-align: left;
-            }
-            #contents3{
-                position: absolute;
-                top: 85%;
-                height: 45%;
-                width: 70%;
-                margin: auto;
-            }  
-            input{
-                background-color: #f1f1f1;
-                padding: 2px;   
-                height: 18pt;
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 12pt;
-                text-align: left;
-                color: black;
-                box-sizing: border-box;
-                border: 0;
-            }
-            textarea{
-                background-color: #f1f1f1;
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 12pt;
-                width: 85%;
-                height: 20pt;
-                box-sizing: border-box;
-                border: 0;
-            }
-
-            /* Footer */
-            footer {
-                padding: 20px;
-                text-align: center;
-                background: #f1f1f1;
-                margin-top: 20px;
-                clear : both;
-            } 
-        </style>
-    </head>
+<head>
+    <title>맛집 등록 화면</title> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        *{
+            box-sizing: border-box;
+          }
+          body{
+            margin:0;
+          }
+        .header{
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 20pt;
+            text-align: center;
+            padding: 55px;
+        }
+        .contents0{
+            line-height: 250%;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            width: 70%;
+            height: 80%;
+            background-color: white;
+            margin:auto;
+            border-radius: 2%;
+            text-align: center;
+        }
+        input{
+            background-color: #f1f1f1;
+            padding: 2px;
+            height: 18pt;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            text-align: left;
+            color: black;
+            box-sizing: border-box;
+            border: 0;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #f1f1f1;
+            margin-top: 20px;
+            clear : both;
+        } 
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
     <body bgcolor="#f3f3f3">
+        
         <div class="header" id="logo" onclick="location.href='index.html'">
             <img src="/static/YomoJomoLogo.png" width="150px">
-        </div>
-        
-        <center><b><label style="text-align: center; font-size: 14.5pt; font-family: 'Noto Sans KR', sans-serif;" for="name">{{data.res_name}}</label></b></center><br><br>
-
+          </div>
         <div class="contents0">
-            <br>
-            <form method="post" action="/result3.html" enctype="multipart/form-data">
-                <input type="hidden" name="res_name" value="{{data.res_name}}">
-                <div id="contents1">    
-                	<img id="user_image" src="/static/noimage.jpg" alt="" width="80%" height="87%" >
-                	<!-- onchange event 걸어주기  -->
-                	<input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="review_img" id="user_profile_img" requried>
+            {% block section %}
+            {% for mesg in get_flashed_messages() %}
+            <script>alert("{{ mesg }}")</script>
+            {% endfor %}
+            {% endblock section %}
+            
+            <form method="post" action="/result.html" enctype="multipart/form-data">
+            	<div style="float: left; width: 52%; height:90%;">
+                <br><br>
+                <img id="user_image" src="/static/noimage.jpg" alt="" width="400px" height="400px" style="text-align: center;" ><br>
+                <!-- onchange event 걸어주기  -->
+                가게 외부 사진 : <input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="res_img" id="user_profile_img" /> 
+            	<br>
             	</div>
                 
-                <div id="contents2">
-                    <br>
-                    <b>닉네임 : </b><input type="text" name="rev_name" size="18" requried><br/>
-                    <b>메뉴 : </b><input type = "text" name = "rev_menu" size="20" required><br/>
-                    <b>가격 : </b><input type = "text" name = "rev_price" size="18" required> 원<br>
-                    <b>별점 : </b><input type="radio" name="rev_score" value="1" checked>1 
-                    <input type="radio" name="rev_score" value="2">2 
-                    <input type="radio" name="rev_score" value="3">3
-                    <input type="radio" name="rev_score" value="4">4
-                    <input type="radio" name="rev_score"value="5">5 <br/>
+            	<div style="float: right; width: 48%; height:90%; text-align:left;">
+                	<br><br>
+                	<b>식당 이름 : </b><input type ="text" name = "res_name" size="35" required><br/>
+                	<b>주소 : </b><input type="text" name="res_addr" id="res_addr" placeholder="주소" size="30" readonly required>
+                    <input type="button" onclick="sample3_execDaumPostcode()" value="주소 찾기"><br>
+                	<b>상세주소 : </b><input type="text" name="res_addr_detail" id="res_addr_detail" placeholder="상세주소" size="36"><br>
+                    <div id="wrap" style="display:none; border:1px solid; width:500px; height:300px; margin:5px 0; position:relative; z-index:3;">
+                        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+                    </div>
                     
-                    <b>식사 시간대 : </b><input type="checkbox" name="rev_time" value="아침" checked>아침
-                    <input type="checkbox" name="rev_time" value="점심">점심
-                    <input type="checkbox" name="rev_time" value="저녁">저녁
-                    <input type="checkbox" name="rev_time" value="기타">기타 <br/>
-                    
-                    <b>Comment : </b><br>
-                    <textarea class="textarea" name="rev_memo"></textarea>
-                
-                </div>
+                	<b>전화번호 : </b><input type = "text" name = "res_tel" size="36" placeholder="010-xxxx-xxxx"><br/>
+                    <b>홈페이지 URL : </b><input type = "text" name = "res_site" size="32"><br/>
+                    <b>구역 : </b><select name="res_area" id = "select-area" required><br/>
+                    <option>교내</option>
+                    <option>이대 정문 (이대역-신촌 기차역)</option>
+                	<option>이대 후문 (후문-세브란스)</option>
+                	<option>신촌</option>
+                    </select> <br/>
+                	<b>음식 종류: </b><select name="res_category" id = "select-food">
+                	<option>한식</option>
+                	<option>양식</option>
+                	<option>중식</option>
+                	<option>일식</option>
+                    <option>세계</option>
+                	<option>디저트, 커피</option> 
+                 	</select> <br/>
+                	<b>가격대 : </b><select name="res_price" id = "price" required>
+                	<option>5,000원 이하</option>
+                	<option>5,000원-10,000원</option>
+                	<option>10,000원-15,000원</option>
+                	<option>15,000원-20,000원</option>
+                	<option>20,000원 이상</option>
+                  	</select> <br/>
+                	<b>주차 여부: </b><select name="parking" id = "parking">
+                	<option>O</option>
+                	<option>X</option>
+                	</select><br/>      
+                	<b>영업 시간: </b><input type="time" id="appt" name="appt_open" max="24:00" required>
+                    <input type="time" id="appt" name="appt_close" max="24:00" required><br> 
+                    <b>브레이크 타임: </b><input type="time" id="break" name="break_open" min="07:00" max="24:00">
+                	<input type="time" id="break" name="break_close" max="24:00"><br/><br> 
+            	</div>
+            	<br>
+            	<input name="register" type="submit" onClick="location.href='result.html'" value="맛집 등록하기" style="background-color: #738b5f; height:30px; width:105px; text-align:center; color:white;" name="register1"> 
+        	</form>
+        </div>        
+    <footer>
 
-                <div id="contents3">
-                    <br><br>
-                    <div style="float: left; width: 25%; height: 70%">
-                        <b style="font-size: 13pt;">인원</b><br>
-                        <input type="checkbox" name="rev_headcount" value="혼자">혼자<br>
-                        <input type="checkbox" name="rev_headcount" value="친구">친구<br>
-                        <input type="checkbox" name="rev_headcount" value="연인">연인<br/>
-                        <input type="checkbox" name="rev_headcount" value="가족">가족<br/>
-                        <input type="checkbox" name="rev_headcount" value="단체">단체<br/>
-                    </div>
-                    <div style="float: left; width: 23%; height: 70%">
-                        <b style="font-size: 13pt;">양</b><br>
-                        <input type="checkbox" name="rev_amount" value="많음">많음　<br>
-                        <input type="checkbox" name="rev_amount" value="적당함">적당함 <br>
-                        <input type="checkbox" name="rev_amount" value="적음">적음　<br/>
-                    </div>
-                    <div style="float: left; width: 23%; height: 70%">
-                        <b style="font-size: 13pt;">비건 메뉴</b><br>
-                        <input type="checkbox" name="rev_vegan" value="O">O<br>
-                        <input type="checkbox" name="rev_vegan" value="X">X<br>
-                    </div>
-                    <div style=" float: left; width: 29%; height: 70%">
-                        <b style="font-size: 13pt;">기타</b><br>
-                        <input type="checkbox" name="rev_etc_1" value="인테리어가 좋음">인테리어가 좋음<br>
-                        <input type="checkbox" name="rev_etc_2" value="서비스가 좋음">서비스가 좋음<br>
-                        <input type="checkbox" name="rev_etc_3" value="직원이 친절함">직원이 친절함<br/>
-                        <input type="checkbox" name="rev_etc_4" value="음식이 맛있음">음식이 맛있음<br>
-                        <input type="checkbox" name="rev_etc_5" value="분위기가 좋음">분위기가 좋음<br>
-                    </div>
-                    <input type="submit" value="리뷰 등록하기" style="background-color: #738b5f; height:30px; color:white; height:30px; width:100px; text-align:center;" onClick="location.href='result3.html'" name="register3">  
-                </div>         
-            </form>
-        
-        </div>
-
-        <footer>
-          
-        </footer>
-        
-        <script>
-            function PreviewImage() {
-                // 파일리더 생성
-                var preview = new FileReader();
-                preview.onload = function (e) {
-                    // img id 값 
-                    document.getElementById("user_image").src = e.target.result;
-                };
-                // input id 값
-                preview.readAsDataURL(document.getElementById("user_profile_img").files[0]);
-            };
-        </script>
+      </footer>
     </body>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        // 우편번호 찾기 찾기 화면을 넣을 element
+            var element_wrap = document.getElementById('wrap');
+            function foldDaumPostcode() {
+                // iframe을 넣은 element를 안보이게 한다.
+                element_wrap.style.display = 'none';
+            }
+            
+            function sample3_execDaumPostcode() {
+                // 현재 scroll 위치를 저장해놓는다.
+                var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("res_addr").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("res_addr_detail").focus();
+
+                // iframe을 넣은 element를 안보이게 한다.
+                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                element_wrap.style.display = 'none';
+
+                // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                document.body.scrollTop = currentScroll;
+            },
+            // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+            onresize : function(size) {
+                element_wrap.style.height = size.height+'px';
+            },
+                    width : '100%',
+                    height : '100%'
+                }).embed(element_wrap);
+                
+                // iframe을 넣은 element를 보이게 한다.
+                element_wrap.style.display = 'block';
+            }
+        
+        function PreviewImage() {
+            // 파일리더 생성 
+            var preview = new FileReader();
+            preview.onload = function (e) {
+                // img id 값 
+                document.getElementById("user_image").src = e.target.result;
+            };
+            // input id 값 
+            preview.readAsDataURL(document.getElementById("user_profile_img").files[0]);
+        };
+        </script>
+      
 </html>

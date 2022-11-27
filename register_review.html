@@ -37,7 +37,7 @@
             }
             #contents2{
                 float: right;
-                height: 70%;
+                height: 55%;
                 width: 40%; 
                 margin-right: 70px;
                 font-size: 12pt;
@@ -46,7 +46,7 @@
             #contents3{
                 position: absolute;
                 top: 85%;
-                height: 40%;
+                height: 45%;
                 width: 70%;
                 margin: auto;
             }  
@@ -83,8 +83,8 @@
     </head>
     <body bgcolor="#f3f3f3">
         <div class="header" id="logo" onclick="location.href='index.html'">
-            <img src="YomoJomoLogo.png" width="150px">
-          </div>
+            <img src="/static/YomoJomoLogo.png" width="150px">
+        </div>
         
         <center><b><label style="text-align: center; font-size: 14.5pt; font-family: 'Noto Sans KR', sans-serif;" for="name">{{data.res_name}}</label></b></center><br><br>
 
@@ -98,58 +98,58 @@
                 	<input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="review_img" id="user_profile_img" requried>
             	</div>
                 
-                <br>
                 <div id="contents2">
-            		<br>
-            		<b>닉네임 : </b><input type="text" name="rev_name" size="18" requried><br/>
-            		<b>메뉴 : </b><input type = "text" name = "rev_menu" size="20" required><br/>
-            		<b>가격 : </b><input type = "text" name = "rev_price" size="18" required> 원<br>
-            		<b>별점 : </b><input type="radio" name="rev_score" value="1" checked>1 
-            		<input type="radio" name="rev_score" value="2">2 
-            		<input type="radio" name="rev_score" value="3">3 
-            		<input type="radio" name="rev_score" value="4">4
-            		<input type="radio" name="rev_score"value="5">5 <br/>
-  
-            		<b>식사 시간대 : </b><input type="checkbox" name="rev_time" value="아침" checked>아침 
-            		<input type="checkbox" name="rev_time" value="점심">점심 
-            		<input type="checkbox" name="rev_time" value="저녁">저녁 
-            		<input type="checkbox" name="rev_time"value="기타">기타 <br/>
-            
-            		<b>Comment : </b><br>   
-            		<textarea class="textarea" name="rev_memo"></textarea>
+                    <br>
+                    <b>닉네임 : </b><input type="text" name="rev_name" size="18" requried><br/>
+                    <b>메뉴 : </b><input type = "text" name = "rev_menu" size="20" required><br/>
+                    <b>가격 : </b><input type = "text" name = "rev_price" size="18" required> 원<br>
+                    <b>별점 : </b><input type="radio" name="rev_score" value="1" checked>1 
+                    <input type="radio" name="rev_score" value="2">2 
+                    <input type="radio" name="rev_score" value="3">3
+                    <input type="radio" name="rev_score" value="4">4
+                    <input type="radio" name="rev_score"value="5">5 <br/>
+                    
+                    <b>식사 시간대 : </b><input type="checkbox" name="rev_time" value="아침" checked>아침
+                    <input type="checkbox" name="rev_time" value="점심">점심
+                    <input type="checkbox" name="rev_time" value="저녁">저녁
+                    <input type="checkbox" name="rev_time" value="기타">기타 <br/>
+                    
+                    <b>Comment : </b><br>
+                    <textarea class="textarea" name="rev_memo"></textarea>
+                
+                </div>
 
-        		</div>
-                <br>
-        		<div id="contents3">
-            		<div style="float: left; width: 25%; height: 70%">
-                		<b style="font-size: 13pt;">인원</b><br>
-                		<input type="checkbox" name="rev_headcount" value="혼자">혼자<br>
-                		<input type="checkbox" name="rev_headcount" value="친구">친구<br>
-                		<input type="checkbox" name="rev_headcount"value="연인">연인<br/>
-                		<input type="checkbox" name="rev_headcount"value="가족">가족<br/>
-                		<input type="checkbox" name="rev_headcount"value="단체">단체<br/>
-            		</div>
-            		<div style="float: left; width: 23%; height: 70%">
-                		<b style="font-size: 13pt;">양</b><br>
-                		<input type="checkbox" name="rev_amount" value="많음">많음　<br>
-                		<input type="checkbox" name="rev_amount" value="적당함">적당함 <br>
-                		<input type="checkbox" name="rev_amount"value="적음">적음　<br/>
-            		</div>
-            		<div style="float: left; width: 23%; height: 70%">
-                		<b style="font-size: 13pt;">비건 메뉴</b><br>
-                		<input type="checkbox" name="rev_vegan" value="O">O<br>
-                		<input type="checkbox" name="rev_vegan" value="X">X<br>
-            		</div>
-            		<div style=" float: left; width: 29%; height: 70%">
-                		<b style="font-size: 13pt;">기타</b><br>
-                		<input type="checkbox" name="rev_etc_interior" value="인테리어가 좋음">인테리어가 좋음<br>
-                		<input type="checkbox" name="rev_etc_service" value="서비스가 좋음">서비스가 좋음<br>
-                		<input type="checkbox" name="rev_etc_kind"value="직원이 친절함">직원이 친절함<br/>
-                		<input type="checkbox" name="rev_etc_tasty" value="음식이 맛있음">음식이 맛있음<br>
-                		<input type="checkbox" name="rev_etc_mood"value="분위기가 좋음">분위기가 좋음<br>
-            		</div>
-            		<input type="submit" value="리뷰 등록하기" style="background-color: #738b5f; height:30px; color:white; height:30px; width:100px; text-align:center;" onClick="location.href='result3.html'" name="register3">  
-        		</div>         
+                <div id="contents3">
+                    <br><br>
+                    <div style="float: left; width: 25%; height: 70%">
+                        <b style="font-size: 13pt;">인원</b><br>
+                        <input type="checkbox" name="rev_headcount" value="혼자">혼자<br>
+                        <input type="checkbox" name="rev_headcount" value="친구">친구<br>
+                        <input type="checkbox" name="rev_headcount" value="연인">연인<br/>
+                        <input type="checkbox" name="rev_headcount" value="가족">가족<br/>
+                        <input type="checkbox" name="rev_headcount" value="단체">단체<br/>
+                    </div>
+                    <div style="float: left; width: 23%; height: 70%">
+                        <b style="font-size: 13pt;">양</b><br>
+                        <input type="checkbox" name="rev_amount" value="많음">많음　<br>
+                        <input type="checkbox" name="rev_amount" value="적당함">적당함 <br>
+                        <input type="checkbox" name="rev_amount" value="적음">적음　<br/>
+                    </div>
+                    <div style="float: left; width: 23%; height: 70%">
+                        <b style="font-size: 13pt;">비건 메뉴</b><br>
+                        <input type="checkbox" name="rev_vegan" value="O">O<br>
+                        <input type="checkbox" name="rev_vegan" value="X">X<br>
+                    </div>
+                    <div style=" float: left; width: 29%; height: 70%">
+                        <b style="font-size: 13pt;">기타</b><br>
+                        <input type="checkbox" name="rev_etc_1" value="인테리어가 좋음">인테리어가 좋음<br>
+                        <input type="checkbox" name="rev_etc_2" value="서비스가 좋음">서비스가 좋음<br>
+                        <input type="checkbox" name="rev_etc_3" value="직원이 친절함">직원이 친절함<br/>
+                        <input type="checkbox" name="rev_etc_4" value="음식이 맛있음">음식이 맛있음<br>
+                        <input type="checkbox" name="rev_etc_5" value="분위기가 좋음">분위기가 좋음<br>
+                    </div>
+                    <input type="submit" value="리뷰 등록하기" style="background-color: #738b5f; height:30px; color:white; height:30px; width:100px; text-align:center;" onClick="location.href='result3.html'" name="register3">  
+                </div>         
             </form>
         
         </div>

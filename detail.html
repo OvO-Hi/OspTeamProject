@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <mate name="viewport" content="width=device-width, initial-scale=1"></mate>
+        <title>맛집 세부 화면</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/detail.css" />
+    </head>
+
+    <body bgcolor="#f3f3f3">
+        <div id="logo" onclick="location.href='../../index.html'">
+            <img src="/static/YomoJomoLogo.png" width="150px" />
+        </div>
+        <!--헤더-->
+        <div class="box2">
+            <!--첫번째 박스-->
+
+            <div class="box2_2">
+                <!--2번째 박스 = 왼쪽 영역-->
+                <div class="box2_4">
+                    <!--4번째 박스-->
+                    <strong>{{data.res_name}}</strong>
+                </div>
+                <!--4번째 박스-->
+                <div class="box2_5">
+                    <!--5번째 박스-->
+                    {{data.res_category}} 전문점<br />
+                    
+                    {% if (data['res_tel'] != '') and (data['res_tel'] != 'X') and (data['res_tel'] != 'x') and (data['res_tel'] != '-') %}
+                    {{data.res_tel}}<br />
+                    {% endif %}   
+                    
+                    {{data.res_addr}}<br />
+                    
+                    {% if (data['res_site'] != '') and (data['res_site'] != 'X') and (data['res_site'] != 'x') and (data['res_site'] != '-') %}
+                    {{data.res_site}}<br />
+                    {% endif %}
+                    
+                </div>
+                <!--5번째 박스-->
+
+                <div class="box2_tag">
+                    <!--1번째 태그 박스-->
+                    주차 {% if data['parking'] == "O" %} 가능 {% endif %}
+                    {% if data['parking'] == "X" %} 불가능 {% endif %}
+                </div>
+                <!--1번째 태그 박스-->
+                <div class="box2_tag">
+                    <!--2번째 태그 박스-->
+                    포장, 배달 가능
+                </div>
+                <!--2번째 태그 박스-->
+                <div class="box2_tag">
+                    <!--3번째 태그 박스-->
+                    {{data.appt_open}} - {{data.appt_close}}
+                </div>
+                
+                {% if (data['break_open'] != '') and (data['break_close'] != '') %}
+                <!--3번째 태그 박스-->
+                <div class="box2_tag">
+                    <!--4번째 태그 박스-->
+                    브레이크 타임 {{data.break_open}} - {{data.break_close}}
+                </div>
+                {% endif %}
+                
+                <!--4번째 태그 박스-->
+                <div class="box2_tag">
+                    <!--5번째 태그 박스-->
+                    {{data.res_price}}
+                </div>
+                <!--5번째 태그 박스-->
+
+                <div class="box2_6">
+                    <!--미니맵 구역-->
+                    <img class="map" src="/static/image/{{data.img_path}}" width="90%" />
+                </div>
+                <!--미니맵 구역-->
+
+                <div class="box2_7">
+                    <!--리뷰 미리보기 구역-->
+                    <div class="box2_8">
+                        <strong>리뷰 미리 보기</strong>
+                    </div>
+                    
+                    {% if rev_total > 0 %} {% for data in rev_datas %}
+                    <div class="box2_9">
+                        <!--리뷰 미리보기 첫번째 리뷰--> <!-- float: left;  -->
+                        <img
+                            class="img"
+                            src="/static/image/{{data.img_path}}"
+                            style="float: left; padding-top: 3pt;"
+                            width="20%;"
+                        />
+                        <div class="nickname2"><strong>{{data.rev_name}}</strong></div>
+                        <div class="content_2">
+                            <br /><br />{{data.rev_memo}}<br />
+                            <div class="hash">
+                                {% for etc in data.rev_etc %}
+                                <input type="button" onclick="" value="{{etc}}" />
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                    
+                    {% else %}
+                    <p style="text-align:center;">
+                        <br>등록된 리뷰가 없습니다.
+                    </p>
+     
+                    {% endif %}
+                    
+                    <br />
+
+                    <form method="post" action="/list_reviews">
+                        <input type="hidden" name="res_name" value="{{res_name}}" />
+                        <a href="/list_reviews/{{res_name}}/" color="black"
+                            ><input
+                                type="button"
+                                style="
+                                    border: none;
+                                    color: white;
+                                    background-color: #738b5f;
+                                    width: 50%;
+                                    height: 35pt;
+                                    font-family: 'Noto Sans KR', sans-serif;
+                                    font-size: 12pt;
+                                "
+                                onclick="location.href='rev_list.html';"
+                                value="해당 맛집 리뷰 더보기"
+                        /></a>
+                    </form>
+                    <br />
+                </div>
+                <!--리뷰 미리보기 구역-->
+                <!--2번째 박스-->
+            </div>
+
+            <div class="box2_3">
+                <!--3번째 박스 = 오른쪽 영역-->
+                <div id="btn_2">
+                    <form method="post" action="/list_foods">
+                        <input type="hidden" name="res_name" value="{{res_name}}" />
+                        <a href="/list_foods/{{res_name}}/" color="black"
+                            ><input
+                                type="button"
+                                style="
+                                    color: white;
+                                    background-color: #738b5f;
+                                    width: 90%;
+                                    height: 35pt;
+                                    font-family: 'Noto Sans KR', sans-serif;
+                                    font-size: 12pt;
+                                    border: none;
+                                "
+                                onclick="location.href='food_list.html';"
+                                value="맛집 메뉴 확인하기"
+                        /></a>
+                    </form>
+                </div>
+                {% if menu_total > 0 %}
+    
+                {% for data in menu_datas %}
+                <img class="img2_1" src="/static/image/{{data.img_path}}" width="90%;"/><br><br>
+                {% endfor %}
+                
+                {% else %}
+                <p style="text-align:center;">
+                    <br>등록된 메뉴가 없습니다.
+                </p>
+                
+                {% endif %}
+                <br><br>
+            </div>
+            <!--3번째 박스-->
+        </div>
+        <!--첫번째 박스-->
+
+        <footer></footer>
+    </body>
+</html>

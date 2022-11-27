@@ -1,0 +1,52 @@
+<style>
+.list {
+    text-align: center;
+    font-size: 12pt;
+    background-color: #f3f3f3;
+    color: black;
+    padding: 20px 0px;
+    }
+</style>
+
+{% extends "index.html" %}
+
+{% block section %}
+<p class="list">맛집 리스트</p>
+
+
+{% if total > 0 %}
+    <p style="text-align:center;">
+        <br>맛집 리스트 -- {{total}}개의 맛집이 등록되어 있습니다.<br><br>
+    </p>
+{% for data in datas %}
+<div style="float:left; width:25%;">
+    <div style="text-align:center;">
+        <a href="/view_detail/{{data[1].res_name}}/">
+            <p style="color:black;">{{data[1].res_name}}</p>
+            <img src="/static/image/{{data[1].img_path}}" width="200"></a><br>
+    </div>
+</div>
+{% endfor %}
+
+<!---페이지네이션을 위한 코드 시작-->
+<div class="page-wrap" style="clear:both;">
+    <br><br>
+    <div class="page-nation">
+        <ul>
+            <li>
+                {% for i in range(page_count)%}
+                <a href="{{url_for('list_restaurants', page=i)}}" color="black">{{i+1}}</a>
+                {% endfor %}
+            </li>
+        </ul>
+        <br><br>
+    </div>
+</div>
+
+{% else %}
+   <p>
+       등록된 맛집이 없습니다.
+   </p>
+{% endif %}
+    
+{% endblock section %}

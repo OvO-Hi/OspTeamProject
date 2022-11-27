@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <mate name="viewport" content="width=device-width, initial-scale=1"></mate>
+  <title>리뷰 세부</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/detail.css">
+</head>
+
+
+<body bgcolor="#f3f3f3"><!---->
+  <div id="logo" onclick="location.href='index.html'">
+    <img src="/static/YomoJomoLogo.png" width="150px">
+  </div> <!--헤더-->
+  <h3 style="text-align: center; font-size: 14.5pt;">비아 37</h3>
+  <div class="box1"><!--첫번째 박스-->
+
+    <div id="btn_top"> <!--상단 버튼-->
+        <form method="post" action="/register_review.html">
+            <input type="hidden" name="res_name" value="비아 37">
+            <input type="submit" style="border: none; color:white; background-color: #738b5f; height: 30px; width: 100px; font-family: 'Noto Sans KR', sans-serif; font-size: 11.5pt;" onclick="location.href='register_review.html';" value="리뷰 쓰기">
+            <input type="button" style="border: none; color:white; background-color: #738b5f; height: 30px; width: 150px; font-family: 'Noto Sans KR', sans-serif; font-size: 11.5pt;" onclick="location.href='detail2.html';" value="맛집으로 돌아가기">
+        </form>
+    </div> 
+    <div class="box1_2"><!--2번째 박스 = 첫번째 리뷰-->
+      
+      <div style="height: 200px;">
+        <img class="img" src="/static/sample_images_01.png" width="300">
+        <div class="nickname"><strong>이대감자</strong></div>
+        <div class="score">
+          평점
+          <progress value="80" max="100" ></progress>
+        </div>
+
+        <div class="contents">
+          대표 메뉴라는 바질페스토 뇨끼를 먹었습니다. 부드러운 크림과 뇨끼....
+          <br>
+          <div class="hash">
+            <input type="button" onclick="" value="저녁식사로 좋아요">
+            <input type="button" onclick="" value="가게가 청결해요">
+          </div>
+         </div>
+      </div>
+    </div><!--2번째 박스 = 첫번째 리뷰-->
+
+    <div class="box1_3"><!--3번째 박스 = 두번째 리뷰-->
+      <img class="img" src="/static/sample_images_02.png" style="float: left;" width="300">
+      <div class="nickname"><strong>먹킷리스트</strong></div>
+      <div class="score">
+        평점
+       <progress value="40" max="100" ></progress>
+      </div>
+
+      <div class="contents">
+        나쁘지 않아요
+       <br>
+        <div class="hash">
+         <input type="button" onclick="" value="재료가 신선해요">
+        </div>
+      </div>
+    </div><!--3번째 박스 = 두번째 리뷰-->
+
+    <div class="box1_3"><!--4번째 박스 = 세번째 리뷰-->
+      <img class="img" src="/static/sample_images_03.png" style="float: left;" width="300">
+      <div class="nickname"><strong>저염~!식</strong></div>
+      <div class="score">
+        평점
+       <progress value="60" max="100" ></progress>
+      </div>
+
+      <div class="contents">
+        양고기 맛을 과하지 않게 잘 살린 것 같아요!!! 샐러드가 좀 더 많이 있었으면 좋았을텐데..
+       <br>
+        <div class="hash">
+         <input type="button" onclick="" value="연인">
+         <input type="button" onclick="" value="혼밥하기 좋아요">
+        </div>
+      </div>
+    </div><!--4번째 박스 = 세번째 리뷰-->
+
+    <div class="box1_3"><!--5번째 박스 = 네번째 리뷰-->
+      <img class="img" src="/static/sample_images_04.png" style="float: left;" width="300">
+      <div class="nickname"><strong>E구역먹짱</strong></div>
+      <div class="score">
+        평점
+       <progress value="90" max="100" ></progress>
+      </div>
+
+      <div class="contents">
+        비아37 라자냐가.. 설명이 필요한가..? 다들 제발 한 번만 먹어줘~!~!! 
+        <br>글이 길어지면 이렇게 됩니다 글이 길어지면 이렇게 됩니다 
+       <br>
+       <div class="hash">
+         <input type="button" onclick="" value="양이 많아요">
+         <input type="button" onclick="" value="특별한 메뉴가 있어요">
+       </div>
+      </div>
+    </div><!--5번째 박스 = 네번째 리뷰-->
+
+
+  </div><!--첫번째 박스-->
+
+
+  <footer>
+  </footer>
+</body>
+
+</html>

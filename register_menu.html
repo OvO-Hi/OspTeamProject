@@ -56,14 +56,20 @@
     </style>
   </head>
   <body bgcolor="#f1f1f1">
-    <div class="header" id="logo" onclick="location.href='index.html'">
-      <img src="YomoJomoLogo.png" width="150px">
-    </div>
-    <form method="post" action="/result2.html" enctype="multipart/form-data">
+      
+      <div class="header" id="logo" onclick="location.href='index.html'">
+      <img src="/static/YomoJomoLogo.png" width="150px">
+        </div>
+      <form method="post" action="/result2.html" enctype="multipart/form-data">
+        <center><b><label style="text-align: center; font-size: 14.5pt; font-family: 'Noto Sans KR', sans-serif;" for="name">{{data.res_name}}</label></b></center><br><br>
+        <input type="hidden" name="res_name" value="{{data.res_name}}">
           <div class="contents0">
-              <br>
-              <b><label for="name">맛집 이름: {{data.res_name}}</label></b>
-              <input type="hidden" name="res_name" value="{{data.res_name}}">
+              {% block section %}
+              {% for mesg in get_flashed_messages() %}
+              <script>alert("{{ mesg }}")</script>
+              {% endfor %}
+              {% endblock section %}
+              
               <br>
                   <div class="contents1">
                       <br>
@@ -76,11 +82,12 @@
                   <input type="submit" value="대표 메뉴 등록하기" onClick="location.href='result2.html'"  style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" name="register2">
           </div>
       </form>
+    
     <footer>
       
     </footer>
-    
-    <script>
+      
+      <script>
           function PreviewImage() {
               // 파일리더 생성 
               var preview = new FileReader();
@@ -91,6 +98,7 @@
               // input id 값 
               preview.readAsDataURL(document.getElementById("food_img").files[0]);
           };
-     </script>
+      </script>
+      
   </body>
 </html>

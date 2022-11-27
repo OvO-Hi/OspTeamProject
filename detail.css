@@ -66,11 +66,11 @@ progress{
 }
 .contents{ /*리뷰 세부 화면 - 리뷰 내용*/
     font-size: 12pt;
-    width:60%;
+    width: 60%;
     text-align: left;
-    position:absolute;
-    left:250pt; /*이미지 사이즈만큼*/
-    top:40pt;
+    position: absolute;
+    left: 150pt; /*이미지 사이즈만큼*/
+    top: 40pt;
 }
 .hash{
     margin-top: 5pt;
@@ -305,11 +305,11 @@ progress{
 }
 .contents_3{ /*대표 메뉴 세부 화면 - 메뉴 가격, 내용*/
     font-size: 12pt;
-    width:60%;
+    width: 60%;
     text-align: left;
-    position:absolute;
-    left:250pt; /*이미지 사이즈만큼*/
-    top:40pt;
+    position: absolute;
+    left: 150pt; /*이미지 사이즈만큼*/
+    top: 30pt;
 }
 
 

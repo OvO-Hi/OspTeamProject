@@ -64,7 +64,7 @@
                 <!--2번째 박스 = 첫번째 리뷰-->
 
                 <div style="height: 200px;">
-                    <img class="img" src="/static/image/{{data.img_path}}" width="15%;"/>
+                    <img class="img" src="/static/image/{{data.img_path}}" width="13%;"/>
                     <div class="nickname"><strong>{{data.rev_name}}</strong></div>
                     <div class="score">
                         평점 {{data.rev_score}}
@@ -76,7 +76,7 @@
                                 text-align: left;
                                 position: absolute;
                                 left: 150pt;
-                                top: 45pt;"> <!-- css class="contents" 스타일 적용 안 됨 -->
+                                top: 45pt;"> <!-- css class="contents" -- 스타일 적용 안 됨 -->
                         {{data.rev_memo}}
                         <br />
                         <div class="hash">
@@ -93,6 +93,7 @@
                 <br>등록된 리뷰가 없습니다.<br><br>
             </p>
             {% endif %}
+            <br>
             
         </div>
 

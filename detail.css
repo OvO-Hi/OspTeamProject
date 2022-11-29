@@ -312,7 +312,50 @@ progress{
     top: 30pt;
 }
 
+.box4{ /*회원가입 화면 - 배경색과 분리된 하얀 구역*/
+  margin: auto;
+  padding: 20px 10px;
+  width: 45%;
+  height: auto;
+  position: relative;
+  top: 30px;
+  background-color: #ffffff;
+  border-radius: 1%;
+}
 
+.box4_1{
+  font-size: 11pt;
+  position: relative;
+  margin: auto;
+  padding-top: 7pt;
+  padding-bottom: 7pt;
+  width: 260px;
+  height: 150pt;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.box4_2{
+  font-size: 13pt;
+  position: relative;
+  margin: auto;
+  width: 260px;
+  height: 20pt;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.btn4{
+  color: white;
+  background-color: #738b5f;
+  margin-top: 13px;
+  margin-left: 55px;
+  width: 150px;
+  height: 25pt;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12pt;
+  border: none;
+}
 
 footer {
     padding: 20px;

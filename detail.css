@@ -85,7 +85,7 @@ progress{
 .box1_2{ /*리뷰 세부 화면 - 1번째 리뷰*/
     position: relative;
     margin:auto;
-    margin-top: 45pt;
+    margin-top: 25pt;
     width: 95%;
     height: 150pt;
     background-color: #ffffff;

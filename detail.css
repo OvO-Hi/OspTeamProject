@@ -21,6 +21,7 @@ body{ /*모든 화면 - 폰트 적용 */
     background-color: #ffffff;
     border-radius: 1%;
 }
+/*-----------------여기부터 리뷰 세부 화면----------------*/
 #btn_top{ /*리뷰 세부 화면 - 상단 버튼 구역*/
     width:90%;
     margin:8pt;
@@ -34,10 +35,15 @@ body{ /*모든 화면 - 폰트 적용 */
     float/*모든 세부 화면 - 이미지들*/: left;
     margin:10pt;
 }
+.img_detailfood{ 
+    float/*맛집 대표메뉴 세부 화면 - 이미지들 (윗부분 여백이 다른 사이트와 다르게 적용되어 추가함*/: left;
+    margin:10pt;
+    margin-top: 0pt;
+}
 .nickname{ /*리뷰 세부 화면 - 닉네임*/
     font-size: 12pt;
     float: left;
-    margin-top: 12pt;
+    margin-top: 15pt;
     border-radius: 2px / 2px;
     background-color: #ebebeb;
     width: 100px;
@@ -63,6 +69,7 @@ progress{
     margin: 12pt;
     float: left;
     margin-left: 10px;
+    margin-top: 17pt;
 }
 .contents{ /*리뷰 세부 화면 - 리뷰 내용*/
     font-size: 12pt;
@@ -94,7 +101,7 @@ progress{
     text-align: center;
 }
 
-/*-----------여기부터 맛집 세부 화면-----------*/
+/*-----------------여기부터 맛집 세부 화면----------------*/
 .box2{ /*맛집 세부 화면 - 배경색과 분리된 하얀 구역*/
     margin:auto;
     padding: 90% 30px;
@@ -248,7 +255,7 @@ progress{
     margin-left: 10pt;
     margin-right: 10pt;
     margin-bottom: 10pt;*/
-    transform : translate(6%, 8%)
+    transform : translate(6%, 8%);
 }
 .img2_2{ /*맛집 세부 화면 - 우측 이미지 두번째부터 아래 이미지들*/
     transform: translate(6%);
@@ -262,11 +269,11 @@ progress{
     margin-bottom: 5pt;
 }
 
-/*-----------여기부터 맛집 대표 메뉴 조회 화면-----------*/
+/*---------------여기부터 맛집 대표 메뉴 조회 화면---------------*/
 .box3{ /*맛집 세부 화면 - 배경색과 분리된 하얀 구역*/
     margin: auto;
     padding: 20px 10px;
-    width: 70%;
+    width: 800px;
     height: auto;
     position: relative;
     top: 30px;
@@ -274,7 +281,7 @@ progress{
     border-radius: 1%;
 }
 #btn3_top{ /*리뷰 세부 화면 - 상단 버튼 구역*/
-    width:71%;
+    width:800px;
     margin: auto;
     text-align: right;
     position:relative;
@@ -303,12 +310,13 @@ progress{
     padding-bottom: 3pt;
     font-size: 12pt;
 }
+
 .contents_3{ /*대표 메뉴 세부 화면 - 메뉴 가격, 내용*/
     font-size: 12pt;
-    width: 60%;
     text-align: left;
+    width: 60%;
     position: absolute;
-    left: 150pt; /*이미지 사이즈만큼*/
+    left: 150pt;
     top: 30pt;
 }
 

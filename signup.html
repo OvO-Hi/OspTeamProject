@@ -14,8 +14,8 @@
     </head>
     
     <body bgcolor="#f3f3f3">
-      <div id="logo" onclick="location.href='list.html'">
-        <img src="YomoJomoLogo.png" width="150px" />
+      <div id="logo" style="margin-top:41pt;" onclick="location.href='list.html'">
+        <img src="/static/YomoJomoLogo.png" height="66px" />
     </div>
         
         <!--헤더-->
@@ -24,7 +24,7 @@
         
         {% with mesg = get_flashed_messages() %}
         {% if mesg !=[] %}
-        <script>alert("{{ mesg[0] }}")</script>
+            <script>alert("{{ mesg[0] }}")</script>
         {% endif %}
         {% endwith %}
 
@@ -33,13 +33,15 @@
             <b>회원가입</b>
           </div>
           생성하실 아이디와 비밀번호를 입력하세요. <br><br>
+            <div style="line-height: 200%;">
             <form method="post" action="/signup_post">
-                <b>ID : </b><input type="text" name="id" size="20px" required><br>
-                <b>Password : </b><input type="password" name="pw" size="20px" required><br>
-                <b>Nickname : </b><input type="text" name="nickname" size="20px" required><br>
+                <b>ID : </b><input style="margin-left: 6px;" type="text" name="id" size="29px" required><br>
+                <b>Password : </b><input type="password" name="pw" size="21px" required><br>
+                <b>Nickname : </b><input style="margin-left:3px;" type="text" name="nickname" size="20px" required><br>
                 
-                <input type="button" class="btn4" onclick="location.href='food_list.html';" value="생성" />
+                <input type="submit" class="btn4" value="확인" />
             </form>
+            </div>
             
         </div>
     </div>

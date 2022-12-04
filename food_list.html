@@ -15,7 +15,7 @@
     </head>
 
     <body bgcolor="#f3f3f3">
-        <div id="logo" onclick="location.href='../../../index.html'">
+        <div id="logo" onclick="location.href='../../../list.html'">
             <img src="/static/YomoJomoLogo.png" width="150px" />
         </div>
         <!--헤더-->
@@ -61,7 +61,7 @@
             {% if total > 0 %}
             {% for data in menu_datas %}
             <div class="box3_1">
-                <img class="img" src="/static/image/{{data.img_path}}" width="13%;"/>
+                <img class="img_detailfood" src="/static/image/{{data.img_path}}" width="18%;"/>
                 <div class="menuname"><strong>{{data.menu_name}}</strong></div>
                 <!-- <div class="contents_3">
                     : {{data.menu_price}}원<br />
@@ -70,7 +70,7 @@
                           text-align: left;
                           width: 60%;
                           position: absolute;
-                          left:150pt;
+                          left:125pt;
                           top:30pt;">: {{data.menu_price}}원</p>
             </div><br />
             {% endfor %}

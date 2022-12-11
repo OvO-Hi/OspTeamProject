@@ -1,241 +1,445 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8" />
+    <title>YOMOJOMO</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-  <meta charset="UTF-8">
-  <title>검색 화면</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-    
-    body{
-      background-color: #f3f3f3;
-      margin:0;
-    }
+        body {
+            background-color: #f3f3f3;
+            margin: 0;
+        }
 
-    .header{
-      font-family: 'Gowun Dodum', sans-serif;
-      font-size: 20pt;
-      text-align: center;
-      padding: 55px;
-    }
+        .header {
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 20pt;
+            text-align: center;
+            padding: 55px;
+        }
 
-    #logo{ /*모든 화면 - 상단 로고*/
-    text-align: center;
-    color: #418c2a;
-    cursor: pointer;
-  }
+        #logo {
+            /*모든 화면 - 상단 로고*/
+            text-align: center;
+            color: #418c2a;
+            cursor: pointer;
+        }
 
-    .contents{
-      line-height: 250%;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 12pt;
-      width:70%;
-      height:800px;
-      background-color: white;
-      margin:auto;
-      margin-bottom: 30px;
-      border-radius: 2%;
-      padding: 20px 0px;
-    }
+        .mypage {
+            float: right;
+            text-align: center;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            width: 100px;
+            height: 50px;
+            background-color: #738b5f;
+            margin: auto;
+            margin-bottom: 30px;
+            border-radius: 2%;
+            padding: 50px 0px;
+        }
 
-    /*검색창 + 맛집 등록*/
-    .searchbar{
-      margin:10px;
-    }
+        .contents {
+            line-height: 250%;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12pt;
+            width: 1200px;
+            height: 1050px;
+            background-color: white;
+            margin: auto;
+            margin-bottom: 30px;
+            border-radius: 2%;
+            padding: 20px 0px;
+        }
+        .contents_random {
+            text-align: center;
+            margin: auto;
+        }
 
-    .searchbox{
-      font-size: 15pt;
-      color: black;
-      padding:10px 20px;
-      width:75%;
-      background-color: #f3f3f3;
-      float:left;
-    }
+        /*검색창 + 맛집 등록*/
+        .searchbar {
+            margin: 10px;
+        }
 
-    .searchbox a{
-      margin-right: 10px;
-    }
+        .searchbox {
+            font-size: 15pt;
+            color: black;
+            padding: 10px 20px;
+            width: 75%;
+            background-color: #f3f3f3;
+            float: left;
+        }
 
-    /*메뉴바*/
-    .menu{
-      text-align: center;
-		  height:40px;
-		  background-color: #738b5f;
-    }
+        .searchbox a {
+            margin-right: 10px;
+        }
 
-    .menu > ul > li{
-      float:left;
-      width:140px;
-      position: relative;
-      background-color:#738b5f;
-    }
+        .searchbox input {
+            font-size: 12pt;
+            height: 30px;
+            width: 50px;
+            margin-top: 5px;
+            background-color: #738b5f;
+            border: none;
+            color: white;
+        }
 
-    .menu > ul > li:hover{
-      background-color: #5b6e4c;
-    }
+        /*로그인*/
+        .login {
+            float: right;
+            margin: 10px;
+        }
 
-    .menu > ul > li > ul{
-      width:100px;
-      display:none;
-      position: absolute;
-    }
+        .login div {
+            margin-top: 4px;
+        }
 
-    .menu > ul > li:hover > ul{
-      padding:0;
-      width:140px;
-      display: block;
-      text-align: center;
-      background-color:#738b5f8f;
-    }
+        .loginbutton {
+            font-size: 12pt;
+            height: 30px;
+            background-color: #738b5f;
+            border: none;
+            color: white;
+            margin-right: 5px;
+        }
 
-    .menu > ul > li > ul > li:hover {
-      background-color: #738b5f;
-    }
+        .regbutton {
+            font-size: 12pt;
+            height: 30px;
+            background-color: #738b5f;
+            border: none;
+            color: white;
+        }
 
-    ul li{
-      list-style: none;
-    }
+        /*메뉴바*/
+        .menu {
+            text-align: center;
+            height: 40px;
+            background-color: #738b5f;
+        }
 
-    a{
-      text-decoration: none;
-      color:white;
-    }
-    
-  /*맛집랭킹*/
-  .lanking{
-    text-align:center;
-    font-size: 12pt;
-    background-color:#f3f3f3;
-    color:black;
-    /*margin:50px 10px;*/
-    padding: 20px 0px; 
-  }
+        .menu > ul > li {
+            float: left;
+            width: 140px;
+            position: relative;
+            background-color: #738b5f;
+        }
 
-  article{
-    float:left;
-    text-align: center;
-    width:20%;
-    margin:20px;
-  }
+        .menu > ul > li:hover {
+            background-color: #5b6e4c;
+        }
 
-  article img{
-    width:70%;
-    height:70%;
-  }
+        .menu > ul > li > ul {
+            width: 100px;
+            display: none;
+            position: absolute;
+        }
 
-    /*Footer*/
-    footer{
-      padding:20px;
-      text-align: center;
-      background-color: #f3f3f3;
-      margin-top: 20px;
-      clear: both;
-    }
+        .menu > ul > li:hover > ul {
+            padding: 0;
+            width: 140px;
+            display: block;
+            text-align: center;
+            background-color: #738b5f8f;
+        }
 
-  </style>
+        .menu > ul > li > ul > li:hover {
+            background-color: #738b5f;
+        }
 
+        ul li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /*맛집랭킹*/
+        .ranking {
+            text-align: center;
+            font-size: 12pt;
+            background-color: #f3f3f3;
+            color: black;
+            /*margin:50px 10px;*/
+            /*padding: 20px 0px;*/
+        }
+
+        article {
+            text-align: center;
+            width: 40%;
+            margin: auto;
+        }
+
+        article img {
+            width: 50%;
+            height: 50%;
+        }
+
+        /*Footer*/
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f3f3f3;
+            margin-top: 20px;
+            clear: both;
+        }
+
+        .page-nation li {
+            list-style: none;
+        }
+
+        .page-wrap {
+            text-align: center;
+            font-size: 0;
+        }
+
+        .page-nation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .page-nation a {
+            display: block;
+            margin: 0 3px;
+            float: left;
+            border: 1px solid #e6e6e6;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #fff;
+            font-size: 13px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .list {
+            text-align: center;
+            font-size: 12pt;
+            background-color: #f3f3f3;
+            color: black;
+            padding: 20px 0px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="header" id="logo" onclick="location.href='index.html'">
-    <img src="YomoJomoLogo.png" width="150px">
-  </div>
-
-  <div class="contents">
-    <div class="searchbar">
-      <form>
-        <div class="searchbox">
-          <a style="color:black;">검색</a>
-          <input type="text" name="search" style="width:80%; height:30px;" placeholder="식당이나 메뉴 이름으로 검색하세요.">
-          <input type="button" name="search" onclick="location.href='search3.html'" name="search" style="font-size: 12pt; height:30px; width:50px; margin-top:5px; background-color: #738b5f; border:none; color: white;" value="검색">
-        </div>
-        <div style="float:right; margin:10px;">
-          <div style="margin-top:4px;">
-          </div>
-          <input type="button" onclick="location.href='register1.html'" name="register" style="font-size: 12pt; height:30px; background-color: #738b5f; border:none; color: white;" value="맛집 새로 등록">
-        </div>
-      </form>
+    <div class="header" id="logo" onclick="location.href='/'">
+        <img src="/static/YomoJomoLogo.png" width="150px" />
     </div>
 
-    <br><br><br>
-
-    <nav>
-      <div class="menu">
-        <ul>
-          <li><a>음식종류</a>
-            <ul>
-              <li><a href="search2.html">음식종류-1</a></li>
-              <li><a href="search2.html">음식종류-2</a></li>
-              <li><a href="search2.html">음식종류-3</a></li>
-            </ul>
-          </li>
-          <li><a>가격대</a>
-            <ul>
-              <li><a href="search2.html">가격대-1</a></li>
-              <li><a href="search2.html">가격대-2</a></li>
-              <li><a href="search2.html">가격대-3</a></li>
-            </ul>
-          <li><a>거리</a>
-            <ul>
-              <li><a href="search2.html">거리-1</a></li>
-              <li><a href="search2.html">거리-2</a></li>
-              <li><a href="search2.html">거리-3</a></li>
-             </ul>
-          </li>
-          <li><a>평점</a>
-            <ul>
-              <li><a href="search4.html">평점-1</a></li>
-              <li><a href="search4.html">평점-2</a></li>
-              <li><a href="search4.html">평점-3</a></li>
-            </ul>
-          </li>
-          <li style="float:right;"><a href="search5.html">무작위추천</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <section>
-    {% block section %}
-    <p class="lanking">
-      맛집 순위
-    </p>
-    <div style="margin:20px">
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>인생이막창이네</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>송아저씨빈대떡</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>고삼이</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>영미김밥</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>인생이막창이네</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>송아저씨빈대떡</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>고삼이</p>
-      </article>
-      <article onclick="location.href='detail2.html'">
-        <img src="pic.jpg" alt="lanking image">
-        <p>영미김밥</p>
-      </article>
+    <div class="mypage">
+        {% if session['id'] %}
+        <a href="/mypage" style="color: black; text-decoration-line: none;"
+            ><b>{{session['id']}}님</b></a
+        ><br /><br />
+        <a href="/logout" style="color: white; text-decoration-line: none;">로그아웃</a>
+        {% else %}
+        <a href="/login" style="color: white; text-decoration-line: none;">로그인</a>
+        {% endif %}
     </div>
-    {% endblock section %}
-    </section>
 
-  </div>
+    <div class="contents">
+        <div class="searchbar">
+            <div class="searchbox">
+                <form method="post" action="/search">
+                    <a style="color: black;">검색</a>
+                    <input
+                        type="text"
+                        name="searchname"
+                        style="width: 80%; height: 30px; background-color: white; color: black;"
+                        placeholder="식당이나 메뉴 이름으로 검색하세요."
+                    />
+                    <input type="submit" style="margin-left:5pt;" name="searchbutton" value="검색" />
+                </form>
+            </div>
+            <div class="login">
+                <div></div>
+                <button
+                    class="regbutton"
+                    type="button"
+                    onclick="location.href='/register_restaurant'"
+                    name="register"
+                >
+                    맛집 새로 등록
+                </button>
+            </div>
+        </div>
+        <br /><br /><br />
+        <nav>
+            <script>
+                $(document).ready(function () {
+                    $('#category option:contains("{{category}}")').prop('selected', true);
+                });
+            </script>
 
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a>음식종류</a>
+                        <ul id="category" name="category" onchange="location=this.value">
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, category='한식', price='all', area='all', headcount='all')}}"
+                                    >한식</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, category='양식', price='all', area='all', headcount='all')}}"
+                                    >양식</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, category='중식', price='all', area='all', headcount='all')}}"
+                                    >중식</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, category='일식', price='all', area='all', headcount='all')}}"
+                                    >일식</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, category='카페', price='all', area='all', headcount='all')}}"
+                                    >카페</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a>가격대</a>
+                        <ul id="price" name="price" onchange="location=this.value">
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, price='5,000원 이하', category='all', area='all', headcount='all')}}"
+                                    >5,000원 이하</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, price='5,000원-10,000원', category='all', area='all', headcount='all')}}"
+                                    >10,000원 이하</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, price='10,000원-15,000원', category='all', area='all', headcount='all')}}"
+                                    >15,000원 이하</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, price='15,000원-20,000원', category='all', area='all', headcount='all')}}"
+                                    >20,000원 이하</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, price='20,000원 이상', category='all', area='all', headcount='all')}}"
+                                    >20,000원 이상</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a>구역</a>
+                        <ul id="area" name="area" onchange="location=this.value">
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, area='교내', category='all', price='all')}}"
+                                    >교내</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, area='이대 정문 (이대역-신촌 기차역)', category='all', price='all')}}"
+                                    >정문</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, area='이대 후문 (후문-세브란스)', category='all', price='all')}}"
+                                    >후문</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, area='신촌', category='all', price='all')}}"
+                                    >신촌</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a>인원</a>
+                        <ul id="headcount" name="headcount" onchange="location=this.value">
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, headcount='혼자', category='all', price='all', area='all')}}"
+                                    >혼자</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, headcount='친구', category='all', price='all', area='all')}}"
+                                    >친구</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, headcount='연인', category='all', price='all', area='all')}}"
+                                    >연인</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, headcount='가족', category='all', price='all', area='all')}}"
+                                    >가족</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('list_restaurants', page=i, headcount='단체', category='all', price='all', area='all')}}"
+                                    >단체</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li style="float: right;">
+                        <a href="/random_res">무작위추천</a>
+                    </li>
+                    <!-- {% if session['id'] %}
+                    <li style="float: right;">
+                            <a href="/logout">
+                            로그아웃
+                            </a>
+                    </li>
+                    <li style="float: right;">
+                        <b>{{session['id']}}님</b>
+                    </li>
+                    
+                    {% else %}
+                    <li style="float: right;" onclick="location.href='login.html'" name="login" value="로그인" style="color: #FFFFFF;"><a href="login.html">로그인</a></li>
+                    {% endif %} -->
+                </ul>
+            </div>
+        </nav>
+        {% block section %} {% endblock %}
+    </div>
 </body>

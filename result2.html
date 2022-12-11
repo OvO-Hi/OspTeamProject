@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-</head>
-<body>
-     <section>
-        <p>
-            대표메뉴 이름은 {{data.menu_name}}입니다.
-        </p>
-        <p>
-            대표메뉴 가격은 {{data.menu_price}}원입니다.
-        </p>
-        <img src="{{image_path}}" alt="Menu Image">
-    </section>
-    </body>
-</html>
+{% extends "register_menu.html" %} {% block content %}
+<div class="contents0">
+    <div class="contents1">
+        <br /><img src="{{image_path}}" alt="no image" width="360px" height="340px" /><br />
+    </div>
+    <p style="text-align: center;">메뉴 이름 : {{data.menu_name}}</p>
+    <p style="text-align: center;">가격 : {{data.menu_price}}원</p>
+    <br />
+
+    <form method="post" action="/list_foods/{{data.res_name}}">
+        <input type="hidden" name="res_name" value="{{data.res_name}}" />
+        <input
+            name="register"
+            type="button"
+            onClick="location.href='/list_foods/{{data.res_name}}'"
+            value="메뉴 목록"
+            style="
+                background-color: #738b5f;
+                height: 30px;
+                width: 105px;
+                text-align: center;
+                color: white;
+            "
+            name="menu_back"
+        />
+    </form>
+</div>
+{% endblock %}

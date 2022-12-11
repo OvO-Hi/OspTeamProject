@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <mate name="viewport" content="width=device-width, initial-scale=1"></mate>
+        <title>마이페이지 화면</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/detail.css" />
+    </head>
+
+    <body bgcolor="#f3f3f3">
+        <!---->
+        <div id="logo" onclick="location.href='/'">
+            <img src="/static/YomoJomoLogo.png" width="150px" />
+        </div>
+        <!--헤더-->
+        <h3 style="text-align: center; font-size: 14.5pt;">
+            <p>
+                나의 리뷰 확인하기
+            </p>
+        </h3>
+        <div
+            class="mypage"
+            style="float: right;
+                text-align: center;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 12pt;
+                width: 100px;
+                height: 50px;
+                background-color: #738b5f;
+                margin: auto;
+                margin-bottom: 30px;
+                border-radius: 2%;
+                padding: 50px 0px;}"
+        >
+            {% if session['id'] %}
+            <a href="/mypage" style="color: black; text-decoration-line: none;"
+                ><b>{{session['id']}}님</b></a
+            ><br /><br />
+            <a href="/logout" style="color: white; text-decoration-line: none;">로그아웃</a>
+            {% else %}
+            <a href="login" style="color: white; text-decoration-line: none;">로그인</a>
+            {% endif %}
+        </div>
+
+        <div id="btn3_top">
+            <!--상단 버튼-->
+            <a href="/mypage_fav" color="black">
+                <button
+                    style="
+                        border: none;
+                        color: white;
+                        background-color: #738b5f;
+                        height: 30px;
+                        width: 120px;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        font-size: 11.5pt;
+                    "
+                >
+                    찜한 식당 보기
+                </button></a
+            >
+        </div>
+
+        <div class="box1" style="width: 800px;">
+            {% if total>0 %} {% for data in datas %}
+            <div
+                class="box2_9"
+                style="
+                    width: 750px;
+                    background-color: #ffffff;
+                    border: 3px solid #ffffff;
+                    padding-bottom: 10px;
+                "
+            >
+                <!--리뷰 미리보기 첫번째 리뷰-->
+                <!-- float: left;  -->
+                <img
+                    class="img"
+                    src="/static/image/{{data.img_path}}"
+                    style="float: left; padding-top: 3pt;"
+                    width="100px;"
+                />
+                <div class="nickname"><strong>{{data.res_name}}</strong></div>
+
+                <div class="contents_mypage">
+                    {{data.rev_memo}}<br />
+                    <div class="hash">
+                        {% for etc in data.rev_etc %} {% if etc != "null" %}
+                        <input type="button" onclick="" value="{{etc}}" />
+                        {% endif %} {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <p style="text-align: center;"><br />등록된 리뷰가 없습니다.</p>
+            <br />
+            {% endif %}
+        </div>
+    </body>
+</html>

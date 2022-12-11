@@ -1,31 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-</head>
-<body>
-    <section>
-        <p>
-            닉네임은 {{data.rev_name}}입니다.
-        </p>
-        <p>
-            메뉴는 {{data.rev_menu}}이고, 가격은 {{data.rev_price}}입니다.
-        </p>
-        <p>
-            별점은 {{data.rev_score}}입니다.
-        </p>
-        <p>
-            식사 시간대는 {{data.rev_time}}입니다.
-        </p>
-        <p>
-            코멘트는 다음과 같습니다.
-        </p>
-        <p>
-            "{{data.rev_memo}}"
-        </p>
-    </section>
-
-    </body>
-</html>
+{% extends "register_review.html" %} {% block content %}
+<div id="contents1">
+    <img src="{{image_path}}" width="80%" height="87%" />
+</div>
+<div id="contents2">
+    <p>
+        닉네임 : {{data.rev_name}}
+    </p>
+    <p>
+        메뉴 : {{data.rev_menu}}
+    </p>
+    <p>
+        가격 : {{data.rev_price}}원
+    </p>
+    <p>
+        별점 : {{data.rev_score}}
+    </p>
+    <p>
+        식사 시간대 : {{data.rev_time}}
+    </p>
+    <p>
+        Comment :
+    </p>
+    <textarea class="textarea" name="rev_memo" style="resize: none; height: 100;" readonly>
+{{data.rev_memo}}</textarea
+    >
+    <div id="contents3">
+        <form method="post" action="/list_reviews/{{data.res_name}}">
+            <input
+                type="button"
+                value="리뷰 목록"
+                style="
+                    background-color: #738b5f;
+                    color: white;
+                    height: 30px;
+                    width: 100px;
+                    text-align: center;
+                "
+                onClick="location.href='/list_reviews/{{data.res_name}}'"
+                name="review_back"
+            />
+        </form>
+    </div>
+</div>
+{% endblock %}

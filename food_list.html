@@ -12,17 +12,72 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="/static/detail.css" />
+        <style>
+            .mypage {
+                float: right;
+                text-align: center;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 12pt;
+                width: 100px;
+                height: 50px;
+                background-color: #738b5f;
+                margin: auto;
+                margin-bottom: 30px;
+                border-radius: 2%;
+                padding: 50px 0px;
+            }
+            .page-nation li {
+            list-style: none;
+        }
+
+        .page-wrap {
+            text-align: center;
+            font-size: 0;
+        }
+
+        .page-nation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .page-nation a {
+            display: block;
+            margin: 0 3px;
+            float: left;
+            border: 1px solid #e6e6e6;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #fff;
+            font-size: 13px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        </style>
     </head>
 
     <body bgcolor="#f3f3f3">
-        <div id="logo" onclick="location.href='../../../list.html'">
+        <div id="logo" onclick="location.href='/'">
             <img src="/static/YomoJomoLogo.png" width="150px" />
         </div>
         <!--헤더-->
         <h3 style="text-align: center; font-size: 14.5pt;">{{res_name}}</h3>
+        <div class="mypage">
+            {% if session['id'] %}
+            <a href="/mypage" style="color: black; text-decoration-line: none;"
+               ><b>{{session['id']}}님</b></a><br /><br />
+            <a href="/logout" style="color:white; text-decoration-line : none;">로그아웃</a>
+            {% else %}
+            <a href="/login" style="color:white; text-decoration-line : none;">로그인</a>
+            {% endif %}
+        </div>
         <div id="btn3_top">
             <!--상단 버튼-->
-            <form method="post" action="/register_menu.html">
+            <form method="post" action="/register_menu">
                 <input type="hidden" name="res_name" value="{{res_name}}" />
                 <input
                     type="submit"
@@ -35,7 +90,6 @@
                         font-family: 'Noto Sans KR', sans-serif;
                         font-size: 11.5pt;
                     "
-                    onclick="location.href='register_menu.html';"
                     value="대표메뉴 추가"
                 />
                 <a href="/view_detail/{{res_name}}/" color="black"><input
@@ -74,7 +128,18 @@
                           top:30pt;">: {{data.menu_price}}원</p>
             </div><br />
             {% endfor %}
-            
+            <!-- 페이지네이션을 위한 코드 시작 -->
+            <div class="page-wrap">
+                <div class="page-nation">
+                    <ul>
+                        <li>
+                            {% for i in range(page_count) %}
+                            <a href="/list_foods/{{res_name}}?page={{i}}" color="black">{{i+1}}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>          
+            </div>
             {% else %}
             <p style="text-align:center;">
                 <br>등록된 메뉴가 없습니다.

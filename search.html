@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block section %}
+{% if total > 0 %}
+<div style="float: left; width: 25%;">
+    {{data}}
+</div>
+
+{% else %}
+<p class="ranking">
+    검색 결과
+</p>
+<div style="margin: 20px;">
+    <p style="text-align: center;"><br />검색 결과가 없습니다.<br /><br /></p>
+    <div
+        style="
+            float: left;
+            margin-left: 150px;
+            padding: 40px;
+            border-radius: 5%;
+            text-align: center;
+            background-color: #f3f3f3;
+        "
+    >
+        맛집 직접 등록하기<br /><br />
+        <input
+            type="button"
+            onclick="location.href='/register_restaurant'"
+            name="register"
+            style="height: 30px; background-color: #738b5f; border: none; color: white;"
+            value="맛집 새로 등록"
+        />
+    </div>
+    <div
+        style="
+            float: right;
+            margin-right: 150px;
+            padding: 40px;
+            border-radius: 5%;
+            text-align: center;
+            background-color: #f3f3f3;
+        "
+    >
+        무작위로 추천받기<br /><br />
+        <button
+            name="register"
+            style="height: 30px; background-color: #738b5f; border: none; color: white;"
+            onclick="location.href='/random_res'">무작위 추천</button>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

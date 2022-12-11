@@ -1,0 +1,20 @@
+ {% extends "index.html" %}   
+
+    {% block section %}
+    
+    <p class="ranking">
+      무작위 추천 결과
+    </p>
+    <br>
+    <div class="contents_random" >
+      <p style="margin-left:5px;">
+                랜덤 추첨 결과입니다! 
+          </p>
+        <article>
+        <a href="/view_detail/{{rand.res_name}}/">
+        <img src="/static/image/{{rand.img_path}}" style="width: 260px; height: 270px; object-fit: cover;"></a>
+          <p>이름:  {{rand.res_name}}</p>       
+      </article>
+    </div>
+    {% endblock section %}
+

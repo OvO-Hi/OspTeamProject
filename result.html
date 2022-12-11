@@ -1,55 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>맛집 등록 확인</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/detail.css">
-</head>
-<body bgcolor="#f3f3f3">
-    <div id="logo" onclick="location.href='index.html'"><!--헤더-->
-        <img src="/static/YomoJomoLogo.png" width="150px">
-    </div> <!--헤더-->
-    
-    <div class="box1"><!--첫번째 박스-->
-    <section>
-        <p>
-            식당 이름은 {{data.res_name}}이고, 주소는 {{data.res_addr}}, {{data.res_addr_detail}}입니다.
-        </p>
-        <p>
-            전화번호는 {{data.res_tel}}이고, 홈페이지 주소는 {{data.res_site}}입니다.
-        </p>
-        <p>
-            구역은 {{data.res_area}}이며, 카테고리는 {{data.res_category}}이고, 가격대는 {{data.res_price}}입니다.
-        </p>
-        <p>
-            주차는
-            {% if data['parking'] == "O" %}
-            가능하며
-            {% endif %}
-            {% if data['parking'] == "X" %}
-            불가능하며
-            {% endif %}
-            가게 영업 시간은 {{data.appt_open}}에서 {{data.appt_close}}까지입니다.
-        </p>
-        <img src="{{image_path}}" alt="My Image">
-        
-        <form method="post" action="/register_menu.html">
-            <input type="hidden" name="res_name" value="{{data.res_name}}">
-            <div>
-                <p>
-                    It's time to register the representative menu in {{data.res_name}}
-                </p>
-                <button type="submit" name="menu" onClick="location.href='register_menu.html'">메뉴 등록</button><br><br>
-            </div>
-        </form>
-        
-    </section>
-    </div>
-  
-    </body>
-</html>
+{% extends "register_restaurant.html" %} {% block content %}
+<div style="float: left; width: 52%; height: 85%;">
+    <br />
+    <img src="{{image_path}}" alt="" width="80%" height="87%" />
+    <br />
+</div>
+
+<div style="float: right; width: 48%; height: 85%; text-align: left;">
+    <br />
+    식당 이름 : {{data.res_name}}<br />
+
+    주소 : {{data.res_addr}} {% if data.res_addr_detail != "" %} , {{data.res_addr_detail}} {% endif
+    %}<br />
+
+    {% if data.res_tel != "" %} 전화번호 : {{data.res_tel}}<br />
+    {% endif %} {% if data.res_site != "" %} 홈페이지 URL : {{data.res_site}}<br />
+    {% endif %} 구역 : {{data.res_area}}<br />
+
+    음식 종류: {{data.res_category}}<br />
+
+    가격대 : {{data.res_price}}<br />
+
+    주차 여부 : {% if data['parking'] == "O" %} 가능 {% endif %} {% if data['parking'] == "X" %}
+    불가능 {% endif %}<br />
+
+    영업 시간 : {{data.appt_open}} - {{data.appt_close}}<br />
+
+    {% if (data.break_open != "") and (data.break_close != "") %} 브레이크 타임 :
+    {{data.break_open}} - {{data.break_close}}<br />
+    {% endif %}
+</div>
+<br /><br />
+<button
+    name="restaurant_back"
+    onClick="location.href='/list'"
+    style="background-color: #738b5f; height: 30px; width: 105px; text-align: center; color: white;"
+>
+    맛집 등록하기
+</button>
+
+{% endblock %}

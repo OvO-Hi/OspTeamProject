@@ -14,71 +14,154 @@
     </head>
 
     <body bgcolor="#f3f3f3">
-        <div id="logo" onclick="location.href='../../index.html'">
+        <div id="logo" onclick="location.href='/'">
             <img src="/static/YomoJomoLogo.png" width="150px" />
         </div>
         <!--헤더-->
-        <div class="box2">
+
+        <div class="mypage">
+            {% if session['id'] %}
+            <a href="/mypage" style="color: black; text-decoration-line: none;"
+                ><b>{{session['id']}}님</b></a
+            ><br /><br />
+            <a href="/logout" style="color: white; text-decoration-line: none;">로그아웃</a>
+            {% else %}
+            <a href="/login" style="color: white; text-decoration-line: none;">로그인</a>
+            {% endif %}
+        </div>
+
+        <div style="width: 1200px;" class="box2">
             <!--첫번째 박스-->
 
             <div class="box2_2">
                 <!--2번째 박스 = 왼쪽 영역-->
-                <div class="box2_4">
+
+                <div style="float: left;" class="box2_4">
                     <!--4번째 박스-->
                     <strong>{{data.res_name}}</strong>
                 </div>
+
+                <div>
+                    <!--찜 등록...
+                    <div style="float: right; margin-right: 10pt; margin-top: 3pt;">
+                        <a href="/add_fav">
+                            <input
+                                type="button"
+                                value="찜하기"
+                                style="
+                                    font-size: 11pt;
+                                    border: 0px;
+                                    font-family: 'Noto Sans KR', sans-serif;
+                                    background-color: #738b5f;
+                                    color: white;
+                                    height: 27px;
+                                    width: 60px;
+                                    text-align: center;
+                                "
+                                name="favbutton">
+                        </a>
+                    </div>-->
+                    <form method="post" action="/add_fav" enctype="multipart/form-data">
+                        <div style="float: right; margin-right: 10pt; margin-top: 3pt;">
+                            <input type="hidden" name="id" value="{{session['id']}}" />
+                            <input type="hidden" name="res_name" value="{{data.res_name}}" />
+                            <input type="hidden" name="img_path" value="{{data.img_path}}" />
+                            <input
+                                type="submit"
+                                value="찜하기"
+                                style="
+                                    font-size: 11pt;
+                                    border: 0px;
+                                    font-family: 'Noto Sans KR', sans-serif;
+                                    background-color: #738b5f;
+                                    color: white;
+                                    height: 27px;
+                                    width: 60px;
+                                    text-align: center;
+                                "
+                                name="favbutton"
+                            />
+                        </div>
+                    </form>
+                    <!--찜 등록...-->
+
+                    <!--평점-->
+                    <p
+                        style="
+                            margin-top: 8pt;
+                            margin-left: 100pt;
+                            font-size: 13pt;
+                            color: #738b5f;
+                        "
+                    >
+                        {% if avg_rate != 0 %}
+                        <b style="padding-left: 12px; margin-left: -10pt; font-size: 15pt;">
+                            {{avg_rate}}</b
+                        >
+                        {% else %} 별점을 등록해주세요. {% endif %}
+                    </p>
+                    <!--평점...-->
+                </div>
+
                 <!--4번째 박스-->
                 <div class="box2_5">
                     <!--5번째 박스-->
                     {{data.res_category}} 전문점<br />
-                    
-                    {% if (data['res_tel'] != '') and (data['res_tel'] != 'X') and (data['res_tel'] != 'x') and (data['res_tel'] != '-') %}
-                    {{data.res_tel}}<br />
-                    {% endif %}   
-                    
-                    {{data.res_addr}}<br />
-                    
-                    {% if (data['res_site'] != '') and (data['res_site'] != 'X') and (data['res_site'] != 'x') and (data['res_site'] != '-') %}
-                    {{data.res_site}}<br />
-                    {% endif %}
-                    
-                </div>
-                <!--5번째 박스-->
 
-                <div class="box2_tag">
-                    <!--1번째 태그 박스-->
-                    주차 {% if data['parking'] == "O" %} 가능 {% endif %}
-                    {% if data['parking'] == "X" %} 불가능 {% endif %}
+                    {{data.res_addr}}<br />
+
+                    {% if (data['res_tel'] != '') and (data['res_tel'] != 'X') and (data['res_tel']
+                    != 'x') and (data['res_tel'] != '-') %} {{data.res_tel}}
+                    <button onclick="document.location.href='tel:<%={{data.res_tel}}%>'">
+                        전화 연결
+                    </button>
+                    <br />
+                    {% endif %} {% if (data['res_site'] != '') and (data['res_site'] != 'X') and
+                    (data['res_site'] != 'x') and (data['res_site'] != '-') %} {{data.res_site}}
+                    <button onclick="window.open('https://{{data.res_site}}')">사이트 연결</button>
+                    <br />
+                    {% endif %} {% if (avg_rate != 0) %} 평균 평점: {{avg_rate}}<br />
+                    {% endif %}
                 </div>
+                <!--5번째 박스 "document.location.href='https://{{data.res_site}}'"-->
+
                 <!--1번째 태그 박스-->
                 <div class="box2_tag">
-                    <!--2번째 태그 박스-->
+                    주차 {% if data['parking'] == "O" %} 가능 {% endif %} {% if data['parking'] ==
+                    "X" %} 불가능 {% endif %}
+                </div>
+                <!--1번째 태그 박스-->
+
+                <!--2번째 태그 박스-->
+                <div class="box2_tag">
                     포장, 배달 가능
                 </div>
                 <!--2번째 태그 박스-->
-                <div class="box2_tag">
-                    <!--3번째 태그 박스-->
-                    {{data.appt_open}} - {{data.appt_close}}
-                </div>
-                
-                {% if (data['break_open'] != '') and (data['break_close'] != '') %}
+
                 <!--3번째 태그 박스-->
                 <div class="box2_tag">
-                    <!--4번째 태그 박스-->
+                    {{data.res_price}}
+                </div>
+                <!--3번째 태그 박스-->
+
+                <!--4번째 태그 박스-->
+                <div class="box2_tag">
+                    {{data.appt_open}} - {{data.appt_close}}
+                </div>
+                <!--4번째 태그 박스-->
+
+                <!--5번째 태그 박스-->
+                {% if (data['break_open'] != '') and (data['break_close'] != '') %}
+                <div class="box2_tag">
                     브레이크 타임 {{data.break_open}} - {{data.break_close}}
                 </div>
                 {% endif %}
-                
-                <!--4번째 태그 박스-->
-                <div class="box2_tag">
-                    <!--5번째 태그 박스-->
-                    {{data.res_price}}
-                </div>
                 <!--5번째 태그 박스-->
 
                 <div class="box2_6">
                     <!--미니맵 구역-->
-                    <img class="map" src="/static/image/{{data.img_path}}" width="90%" />
+                    <div id="map" style="width: 620px; height: 400px; margin: auto;"></div>
+                    <div id="clickLatlng"></div>
                 </div>
                 <!--미니맵 구역-->
 
@@ -87,36 +170,35 @@
                     <div class="box2_8">
                         <strong>리뷰 미리 보기</strong>
                     </div>
-                    
                     {% if rev_total > 0 %} {% for data in rev_datas %}
                     <div class="box2_9">
-                        <!--리뷰 미리보기 첫번째 리뷰--> <!-- float: left;  -->
+                        <!--리뷰 미리보기 첫번째 리뷰-->
+                        <!-- float: left;  -->
                         <img
                             class="img"
                             src="/static/image/{{data.img_path}}"
-                            style="float: left; padding-top: 3pt;"
-                            width="18%;"
+                            style="
+                                float: left;
+                                padding-top: 3pt;
+                                width: 100px;
+                                height: 100px;
+                                object-fit: cover;
+                            "
                         />
                         <div class="nickname2"><strong>{{data.rev_name}}</strong></div>
                         <div class="content_2">
                             <br /><br />{{data.rev_memo}}<br />
                             <div class="hash">
-                                {% for etc in data.rev_etc %}
+                                {% for etc in data.rev_etc %} {% if etc != "null" %}
                                 <input type="button" onclick="" value="{{etc}}" />
-                                {% endfor %}
+                                {% endif %} {% endfor %}
                             </div>
                         </div>
-                        
                     </div>
-                    {% endfor %}
-                    
-                    {% else %}
-                    <p style="text-align:center;">
-                        <br>등록된 리뷰가 없습니다.
-                    </p>
-     
+                    {% endfor %} {% else %}
+                    <p style="text-align: center;"><br />등록된 리뷰가 없습니다.</p>
                     {% endif %}
-                    
+
                     <br />
 
                     <form method="post" action="/list_reviews">
@@ -133,7 +215,6 @@
                                     font-family: 'Noto Sans KR', sans-serif;
                                     font-size: 12pt;
                                 "
-                                onclick="location.href='rev_list.html';"
                                 value="해당 맛집 리뷰 더보기"
                         /></a>
                     </form>
@@ -165,19 +246,16 @@
                         /></a>
                     </form>
                 </div>
-                {% if menu_total > 0 %}
-    
-                {% for data in menu_datas %}
-                <img class="img2_1" src="/static/image/{{data.img_path}}" width="90%;"/><br><br>
-                {% endfor %}
-                
-                {% else %}
-                <p style="text-align:center;">
-                    <br>등록된 메뉴가 없습니다.
-                </p>
-                
+                {% if (menu_total > 0) %} {% for data in menu_datas %}
+                <img
+                    class="img2_1"
+                    src="/static/image/{{data.img_path}}"
+                    width="90%;"
+                /><br /><br />
+                {% endfor %} {% else %}
+                <p style="text-align: center;"><br />등록된 메뉴가 없습니다.</p>
                 {% endif %}
-                <br><br>
+                <br /><br />
             </div>
             <!--3번째 박스-->
         </div>
@@ -185,4 +263,47 @@
 
         <footer></footer>
     </body>
+
+    <script
+        type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b1385a055cedb9ba32a021f82ba6e53e&libraries=services"
+    ></script>
+
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3, // 지도의 확대 레벨
+            };
+
+        // 지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch('{{data.res_addr}}', function (result, status) {
+            // 정상적으로 검색이 완료됐으면
+            if (status === kakao.maps.services.Status.OK) {
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords,
+                });
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content:
+                        '<div style="width:150px;text-align:center;padding:6px 0;">{{data.res_name}}</div>',
+                });
+                infowindow.open(map, marker);
+
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+            }
+        });
+    </script>
 </html>

@@ -19,13 +19,12 @@
           line-height: 250%;
           font-family: 'Noto Sans KR', sans-serif;
           font-size: 12pt;
-          width: 70%;
-          height: 85%;
+          width: 1200px;
+          height: 700px;
           background-color: white;
           margin:auto;
           border-radius: 2%;
           text-align: center;
-
       }
       .contents1{
         height: 68%;
@@ -56,11 +55,12 @@
     </style>
   </head>
   <body bgcolor="#f1f1f1">
-      
-      <div class="header" id="logo" onclick="location.href='index.html'">
+
+      <div class="header" id="logo" onclick="location.href='/'">
       <img src="/static/YomoJomoLogo.png" width="150px">
         </div>
-      <form method="post" action="/result2.html" enctype="multipart/form-data">
+      {% block content %}
+      <form method="post" action="/result2" enctype="multipart/form-data">
         <center><b><label style="text-align: center; font-size: 14.5pt; font-family: 'Noto Sans KR', sans-serif;" for="name">{{data.res_name}}</label></b></center><br><br>
         <input type="hidden" name="res_name" value="{{data.res_name}}">
           <div class="contents0">
@@ -70,7 +70,6 @@
               {% endfor %}
               {% endblock section %}
               
-              <br>
                   <div class="contents1">
                       <br>
                       <img id="user_image" src="/static/noimage.jpg" alt="no image" width="360px" height="340px"><br>
@@ -79,9 +78,10 @@
                   <b>메뉴 이름 :</b><input type="text" name="menu_name" id="메뉴 이름" size="45px" style="text-align: center;"><br>
                   <b>가격 : </b><input type="text" name="menu_price" id="메뉴 가격" size="46px" style="text-align: center;"> 원
                   <br><br>
-                  <input type="submit" value="대표 메뉴 등록하기" onClick="location.href='result2.html'"  style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" name="register2">
+                  <input type="submit" value="대표 메뉴 등록하기" style="background-color: #738b5f; height:30px; width:135px; text-align:center; color:white;" name="register2">
           </div>
       </form>
+      {% endblock content %}
     
     <footer>
       
@@ -99,6 +99,7 @@
               preview.readAsDataURL(document.getElementById("food_img").files[0]);
           };
       </script>
+      
       
   </body>
 </html>

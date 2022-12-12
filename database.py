@@ -241,7 +241,7 @@ class DBhandler:
         for res in restaurants.each():
             val = res.val()
             if val['res_name'] == name:
-                target_value.append(val)
+                return val
         return target_value
     
     #인원수에 따른 레스토랑 필터링

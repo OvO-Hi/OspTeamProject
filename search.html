@@ -3,7 +3,11 @@
 {% block section %}
 {% if total > 0 %}
 <div style="float: left; width: 25%;">
-    {{data}}
+    <article>
+        <a href="/view_detail/{{ data['res_name'] }}/">
+            <img src="/static/image/{{ data['img_path'] }}" style="width: 260px; height: 270px; object-fit: cover;"></a>
+            <p>이름:  {{ data['res_name'] }}</p>       
+    </article>
 </div>
 
 {% else %}

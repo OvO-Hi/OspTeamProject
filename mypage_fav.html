@@ -45,19 +45,19 @@
             <a href="login" style="color: white; text-decoration-line: none;">로그인</a>
             {% endif %}
         </div>
-        <div class="box3">
+        <div class="box3" style="width:500px;">
             <!--하얀 배경-->
             
         {% if total>0 %} {% for data in datas %}
-        <div class="box2_9" style="width:750px; background-color: #ffffff; border: 3px solid #ffffff; padding-bottom:10px;">
+        <div class="box2_9" style="width:500px; background-color: #ffffff; border: 3px solid #ffffff; padding-bottom:10px;">
         <!--리뷰 미리보기 첫번째 리뷰-->
         <!-- float: left;  -->
             <a href="/view_detail/{{data[1].res_name}}/">
         <img
         class="img"
         src="/static/image/{{data[1].img_path}}"
-        style="float: left; padding-top: 3pt;"
-        width="100px;"
+        style="float: left; padding-top: 3pt; width: 100px; height: 100px; object-fit: cover;"
+        
          />
         <div class="nickname" style="color: black;" ><strong>{{data[1].res_name}}</strong></div>
             </a>

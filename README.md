@@ -59,4 +59,4 @@ https://velog.io/@gongkeo/Yomojomo
 2022-2 오픈SW플랫폼 Team.요모조모
 
 ## LICENSE
-This project follows MIT LICENSE. Click here to see more details.
+This project follows MIT LICENSE.

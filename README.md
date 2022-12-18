@@ -1,5 +1,5 @@
 # YOMOJOMO 
-
+An application for introducing restaurants near Ewha Womans University
 # Implementation Tools & Prerequisites
 
 We used Firebase, Flask , Python for back-end, HTML, JavaScript, CSS for front-end and visualization.

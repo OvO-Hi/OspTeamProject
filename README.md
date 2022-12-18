@@ -33,7 +33,7 @@ YOMOJOMO Demo Video
 
 ## Engineering Blog
 
-https://velog.io/@gongkeo/Yomojomo(https://velog.io/@gongkeo/Yomojomo)
+https://velog.io/@gongkeo/Yomojomo
 
 
 ## Collaborators

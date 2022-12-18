@@ -10,7 +10,6 @@ We used Firebase, Flask , Python for back-end, HTML, JavaScript, CSS for front-e
 
 Flask | Server side
 
-
 Python |  For additional Function
 
 

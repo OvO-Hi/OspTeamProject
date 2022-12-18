@@ -4,13 +4,28 @@ An application for introducing restaurants near Ewha Womans University
 
 We used Firebase, Flask , Python for back-end, HTML, JavaScript, CSS for front-end and visualization.
 
+
 ## Back-end
+
+
 Flask | Server side
+
+
 Python |  For additional Function
+
+
 Firebase | Used for Database
+
+
 Front-end
+
+
 HTML | For the page layout
+
+
 JavaScript | To implement function
+
+
 CSS | To design visualization
 
 ## Demo

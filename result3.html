@@ -1,7 +1,35 @@
 {% extends "register_review.html" %} {% block content %}
+<div class="contents0" style="height: 1000px;">
+            <br>
+
 <div id="contents1">
     <img src="{{image_path}}" width="80%" height="87%" />
 </div>
+
+<!-- position: absolute; -->
+<div id="contents3" style="
+                float: right;
+                height: 20pt;
+                width: 100pt;
+                margin: auto;
+              ">
+        <form method="post" action="/list_reviews/{{data.res_name}}">
+            <input
+                type="button"
+                value="리뷰 목록"
+                style="
+                    background-color: #738b5f;
+                    color: white;
+                    height: 30px;
+                    width: 100px;
+                    margin-right: 20pt;
+                    text-align: center;
+                "
+                onClick="location.href='/list_reviews/{{data.res_name}}'"
+                name="review_back"
+            />
+        </form>
+    </div>
 <div id="contents2">
     <p>
         닉네임 : {{data.rev_name}}
@@ -24,22 +52,7 @@
     <textarea class="textarea" name="rev_memo" style="resize: none; height: 100;" readonly>
 {{data.rev_memo}}</textarea
     >
-    <div id="contents3">
-        <form method="post" action="/list_reviews/{{data.res_name}}">
-            <input
-                type="button"
-                value="리뷰 목록"
-                style="
-                    background-color: #738b5f;
-                    color: white;
-                    height: 30px;
-                    width: 100px;
-                    text-align: center;
-                "
-                onClick="location.href='/list_reviews/{{data.res_name}}'"
-                name="review_back"
-            />
-        </form>
-    </div>
+    
 </div>
+    </div>
 {% endblock %}

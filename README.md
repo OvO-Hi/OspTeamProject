@@ -1,6 +1,6 @@
-## YOMOJOMO 
+### YOMOJOMO 
 An application for introducing restaurants near Ewha Womans University
-## Implementation Tools & Prerequisites
+### Implementation Tools & Prerequisites
 
 We used Firebase, Flask , Python for back-end, HTML, JavaScript, CSS for front-end and visualization. Developed with goormIDE. 
 
@@ -27,16 +27,16 @@ We used Firebase, Flask , Python for back-end, HTML, JavaScript, CSS for front-e
 
   * CSS | To design visualization
 
-## Demo
+### Demo
 
-YOMOJOMO Demo Video
+YOMOJOMO Demo Video : https://drive.google.com/file/d/1eWJtTqvurezUxbciTogFPNieePoCTRAc/view
 
-## Engineering Blog
+### Engineering Blog
 
 https://velog.io/@gongkeo/Yomojomo
 
 
-## Collaborators
+### Collaborators
 
 이주현 (1871041)
 
@@ -58,5 +58,5 @@ https://velog.io/@gongkeo/Yomojomo
 
 2022-2 오픈SW플랫폼 Team.요모조모
 
-## LICENSE
+### LICENSE
 This project follows MIT LICENSE.

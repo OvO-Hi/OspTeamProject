@@ -31,7 +31,7 @@
         </div>
 
         <div style="width: 1200px;" class="box2">
-            <!--첫번째 박스-->
+            <!--첫번째 박스 : 하얀 영역-->
 
             <div class="box2_2">
                 <!--2번째 박스 = 왼쪽 영역-->
@@ -61,8 +61,9 @@
                                 name="favbutton">
                         </a>
                     </div>-->
-                    <form method="post" action="/add_fav" enctype="multipart/form-data">
+                    <form method="post" action="/add_fav" enctype="multipart/form-data" onsubmit="return check()">
                         <div style="float: right; margin-right: 10pt; margin-top: 3pt;">
+                            {% if session['id'] %}
                             <input type="hidden" name="id" value="{{session['id']}}" />
                             <input type="hidden" name="res_name" value="{{data.res_name}}" />
                             <input type="hidden" name="img_path" value="{{data.img_path}}" />
@@ -81,6 +82,7 @@
                                 "
                                 name="favbutton"
                             />
+                            {% endif %}
                         </div>
                     </form>
                     <!--찜 등록...-->
@@ -88,17 +90,23 @@
                     <!--평점-->
                     <p
                         style="
-                            margin-top: 8pt;
-                            margin-left: 100pt;
+                            position:absolute;
+                            left:408pt;
+                            top:-12pt;
                             font-size: 13pt;
                             color: #738b5f;
                         "
                     >
                         {% if avg_rate != 0 %}
-                        <b style="padding-left: 12px; margin-left: -10pt; font-size: 15pt;">
+                        <b style="padding-left: 25px; margin-left: -10pt; font-size: 15pt;">
                             {{avg_rate}}</b
                         >
-                        {% else %} 별점을 등록해주세요. {% endif %}
+                        {% else %}<p style="position:absolute;
+                            left:323pt;
+                            top:1pt;
+                            font-size: 13pt;
+                            ">
+                        별점을 등록해주세요.</p>{% endif %}
                     </p>
                     <!--평점...-->
                 </div>
@@ -118,7 +126,7 @@
                     <br />
                     {% endif %} {% if (data['res_site'] != '') and (data['res_site'] != 'X') and
                     (data['res_site'] != 'x') and (data['res_site'] != '-') %} {{data.res_site}}
-                    <button onclick="window.open('https://{{data.res_site}}')">사이트 연결</button>
+                    <button onclick="window.open('{{data.res_site}}')">사이트 연결</button>
                     <br />
                     {% endif %} {% if (avg_rate != 0) %} 평균 평점: {{avg_rate}}<br />
                     {% endif %}
@@ -132,7 +140,7 @@
                 </div>
                 <!--1번째 태그 박스-->
 
-                <!--2번째 태그 박스-->
+                <!--2번째 태그 박스
                 <div class="box2_tag">
                     포장, 배달 가능
                 </div>
@@ -192,6 +200,15 @@
                                 {% for etc in data.rev_etc %} {% if etc != "null" %}
                                 <input type="button" onclick="" value="{{etc}}" />
                                 {% endif %} {% endfor %}
+                                {% if data.rev_headcount != "null" %}
+                                <input type="button" onclick="" value="{{data.rev_headcount}}" />
+                                {% endif %}
+                                {% if data.rev_amount != "null" %}
+                                <input type="button" onclick="" value="{{data.rev_amount}}" />
+                                {% endif %}
+                                {% if data.rev_vegan == "O" %}
+                                <input type="button" onclick="" value="비건 메뉴" />
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -246,16 +263,18 @@
                         /></a>
                     </form>
                 </div>
-                {% if (menu_total > 0) %} {% for data in menu_datas %}
+                
+                <div>
+                {% if (menu_total > 0) %} {% for data in menu_datas %} {% if data.img_path != "" %}
                 <img
                     class="img2_1"
                     src="/static/image/{{data.img_path}}"
-                    width="90%;"
+                    style="width: 90%; height: 200pt; object-fit: cover;"
                 /><br /><br />
-                {% endfor %} {% else %}
-                <p style="text-align: center;"><br />등록된 메뉴가 없습니다.</p>
+                {% endif %} {% endfor %} {% else %}
+                <p style="text-align: center;"><br />등록된 메뉴가 없습니다.<br />ㅤ</p>
                 {% endif %}
-                <br /><br />
+                <br />
             </div>
             <!--3번째 박스-->
         </div>
@@ -305,5 +324,13 @@
                 map.setCenter(coords);
             }
         });
+        
+        function check() {
+
+            alert("찜 등록이 완료되었습니다.");
+
+            return true;
+        }
+        
     </script>
 </html>

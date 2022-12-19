@@ -21,6 +21,8 @@
         </div>
         <!--헤더-->
         <h3 style="text-align: center; font-size: 14.5pt;">{{res_name}}</h3>
+        
+        <center>평점: {{avg_rate}}</center>
 
         <div class="mypage">
             {% if session['id'] %}
@@ -34,7 +36,6 @@
         </div>
 
         <div class="box1" style="width: 800px;">
-            <!--<center>평균 평점: {{avg_rate}}</center>-->
             <div id="btn_top" style="height:30px;">
                 <!--상단 버튼-->
                 <a href="/view_detail/{{res_name}}/" color="black" style="width: 25%; float:right;"
@@ -75,9 +76,9 @@
                 <div style="height: 200px;">
                     <img
                         class="img"
-                        style="margin-top: 3pt;"
+                        style="margin-top: 14pt; width:138px; height: 130px; object-fit: cover;"
                         src="/static/image/{{data.img_path}}"
-                        width="18%;"
+                        
                     />
                     <div class="nickname"><strong>{{data.rev_name}}</strong></div>
                     <div class="score">
@@ -92,7 +93,7 @@
                     <div
                         style="
                             font-size: 12pt;
-                            width: 60%;
+                            width: 80%;
                             text-align: left;
                             position: absolute;
                             left: 125pt;
@@ -106,6 +107,9 @@
                             {% for etc in data.rev_etc %} {% if etc != "null" %}
                             <input type="button" onclick="" value="{{etc}}" />
                             {% endif %} {% endfor %}
+                            {% if data.rev_headcount != "null" %}
+                            <input type="button" onclick="" value="{{data.rev_headcount}}" />
+                            {% endif %}
                         </div>
                     </div>
                 </div>

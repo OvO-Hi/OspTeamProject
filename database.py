@@ -11,6 +11,32 @@ class DBhandler:
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
     
+    def rate(self):
+        restaurants = self.db.child("restaurant").get()
+        rate={}
+        avg_rate=0
+        
+        for res in restaurants.each():
+            value = res.val()
+            name = value['res_name']
+            avg_rate = self.get_avgrate_byname(name)
+            rate={"avg_rate":avg_rate}
+            self.db.child("restaurant").child(name).update(rate)
+        return
+    
+    def rate_update(self, name):
+        res = self.db.child("restaurant").child(name).get()
+        rate={}
+        avg_rate=0
+        
+        value = res.val()
+        if value['res_name'] == name:
+            avg_rate = self.get_avgrate_byname(name)
+            rate={"avg_rate":avg_rate}
+            self.db.child("restaurant").child(name).update(rate)
+        return
+    
+    
     #register_restaurant
     def insert_restaurant(self, name, data, img_path):
         restaurant_info ={
@@ -31,7 +57,6 @@ class DBhandler:
         }
         if self.restaurant_duplicate_check(name):
             self.db.child("restaurant").child(name).set(restaurant_info)
-            print(data, img_path)
             return True
         else:
             return False
@@ -55,7 +80,6 @@ class DBhandler:
         #중복 확인
         if self.menu_duplicate_check(data, name):
             self.db.child("menu").child(data['res_name']).child(name).set(menu_info)
-            print(data, img_path)
             return True
         else:
             return False
@@ -64,7 +88,6 @@ class DBhandler:
         menus = self.db.child("menu").get()
         for m in menus.each():
             if m.key() == data['res_name']:
-                print(m.key())
                 menus = self.db.child("menu").child(data['res_name']).get()
                 for menu in menus.each():
                     if menu.key() == name:
@@ -92,9 +115,34 @@ class DBhandler:
         }
         
         self.db.child("review").child(data['res_name']).push(review_info)
-        print(data, img_path)
+        return
+     
         
+    def del_review(self, userid, name):
+        reviews = self.db.child("review").get()
+        for rev in reviews.each():
+            if rev.key() == name:
+                items = rev.val().items()
+                for item in items:
+                    if item[1]['id'] == userid:
+                        key=item[0]
+                        if item[1]['res_name'] == name:
+                            self.db.child("review").child(name).child(key).remove()
+                            return "item"
     
+    def del_fav(self, userid, name):
+        users = self.db.child("user").get()
+        for user in users.each():
+            key=user.key()
+            val = user.val()
+            if val['id'] == userid:
+                fav = val['fav']
+                items = fav.items()
+                for item in items:
+                    print(item)
+                    if item[0] == name:
+                        self.db.child("user").child(key).child("fav").child(name).remove()
+                        return item[0]
         
     #맛집등록 테이블에서 데이터 가져오기
     def get_restaurants(self):
@@ -124,7 +172,21 @@ class DBhandler:
         rate = sum(rates)/len(rates)
         rate = round(rate, 1)
         return rate
+    
+    def get_avgratelist_byname(self, data_):
+        rates={}
+        try:
+            datas = data_.items()
+            new_datas = datas 
+            for data in datas:
+                name = data[1]['res_name']
+                avg = self.get_avgrate_byname(name)
+                rates[name] = avg
+            return rates
+        except:
+            return rates
 
+    
     def get_food_byname(self, name):
         target_value=[]
         
@@ -155,10 +217,10 @@ class DBhandler:
                 
         restaurants = self.db.child("menu").child(name).get()
         for res in restaurants.each():
-            if len(target_value) >= 3:
-                break
             value = res.val()
             target_value.append(value)
+            if len(target_value) >= 3:
+                break;
         return target_value  
     
     def get_review_byname(self, name):
@@ -192,10 +254,10 @@ class DBhandler:
                 
         restaurants = self.db.child("review").child(name).get()
         for res in restaurants.each():
-            if len(target_value) >= 3:
-                break
             value = res.val()
             target_value.append(value)
+            if len(target_value) >= 3:
+                break
         return target_value 
     
     def get_restaurants_bycategory(self, cate):
@@ -234,47 +296,112 @@ class DBhandler:
             new_dict[k]=v
         return new_dict
     
-    #검색-search
-    def search_restaurants_byname(self, name):
-        target_value=[]
-        restaurants = self.db.child("restaurant").get()
-        for res in restaurants.each():
-            val = res.val()
-            if val['res_name'] == name:
-                return val
-        return target_value
-    
     #인원수에 따른 레스토랑 필터링
     def get_restaurants_byheadcount(self, headcount):
         target_value=[]
-        restaurants = self.db.child("review").get()
+        reviews = self.db.child("review").get()
         value=""
-        for res in restaurants.each():
-            items = res.val().items()
+        dup=0
+        for rev in reviews.each():
+            items = rev.val().items()
             for item in items:
                 if item[1]['rev_headcount'] == headcount:
                     res_name = item[1]['res_name']
-                    print(item[1]['res_name'])
                     restaurants = self.db.child("restaurant").get()
                     for res in restaurants.each():
                         val = res.val()
                         if val['res_name'] == res_name:
-                            target_value.append(val)
+                            for t in target_value:
+                                if t['res_name'] == res_name:
+                                    dup=1
+                            if dup==0:
+                                target_value.append(val)
+                        dup=0
+                            
         new_dict={}
         for k,v in enumerate(target_value):
             new_dict[k]=v
         return new_dict
     
+    #기타에 따른 레스토랑 필터링
+    def get_restaurants_byetc(self, etc):
+        target_value=[]
+        restaurants = self.db.child("review").get()
+        value=""
+        dup=0
+        for res in restaurants.each():
+            items = res.val().items()
+            for item in items:
+                if etc in item[1]['rev_etc']:
+                    res_name = item[1]['res_name']
+                    restaurants = self.db.child("restaurant").get()
+                    for res in restaurants.each():
+                        val = res.val()
+                        if val['res_name'] == res_name:
+                            for t in target_value:
+                                if t['res_name'] == res_name:
+                                    dup=1
+                            if dup==0:
+                                target_value.append(val)
+                        dup=0
+                        
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+    
+    #평점에 따른 레스토랑 필터링
+    def get_restaurants_byrate(self, rate):
+        target_value=[]
+        restaurants = self.db.child("restaurant").get()
+        avg_rate=0
+        
+        for res in restaurants.each():
+            value = res.val()
+            name = value['res_name']
+            avg_rate = value['avg_rate']
+            
+            if avg_rate >= 4:
+                if rate == "높음":
+                    target_value.append(value)
+            elif avg_rate >= 3:
+                if rate == "중간":
+                    target_value.append(value)
+            elif avg_rate >= 1:
+                if rate == "낮음":
+                    target_value.append(value)
+            else:
+                if rate == "없음":
+                    target_value.append(value)
+
+        new_dict={}
+        for k,v in enumerate(target_value):
+            new_dict[k]=v
+        return new_dict
+    
+    #검색-search
+    def search_restaurants_byname(self, name):
+        target_value=[]
+        restaurants = self.db.child("restaurant").get()
+        name = name.strip()   #왼,오른쪽 공백 제거
+        for res in restaurants.each():
+            value = res.val()
+            if value['res_name'] == name :
+                target_value.append(value)
+            elif name in value['res_name']:   #일부만 포함해도 검색 가능
+                target_value.append(value)
+        return target_value
+    
     #mypage에서 리뷰 가져오기
     def get_review_byid(self, userid):
         target_value=[]                
-        restaurants = self.db.child("review").get()
-        for res in restaurants.each():
+        reviews = self.db.child("review").get()
+        for res in reviews.each():
             items = res.val().items()
             for item in items:
                 if item[1]['id'] == userid:
                     target_value.append(item[1])
-        print(target_value)
+        #print(target_value)
         return target_value
     
     #회원가입
@@ -286,14 +413,12 @@ class DBhandler:
         }
         if self.user_duplicate_check(str(data['id'])):
             self.db.child("user").push(user_info)
-            print(data)
             return True
         else:
             return False
         
     def user_duplicate_check(self, id_string):
         users = self.db.child("user").get()
-        #print("users###",users.val())
         if str(users.val()) == "None": # first registration
             return True
         else:
@@ -342,7 +467,6 @@ class DBhandler:
         val_key = self.fav_key(id_string)
         if val_key != None:
             self.db.child("user").child(val_key).child("fav").child(name).set(fav_info)
-        print(name, img_path)
     #찜 등록  
     
     def fav_key(self, id_string):

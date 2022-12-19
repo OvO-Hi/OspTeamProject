@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="/static/detail.css" />
         <style>
             .mypage {
+                position: sticky;
+                top: 100px;
                 float: right;
                 text-align: center;
                 font-family: 'Noto Sans KR', sans-serif;
@@ -115,7 +117,7 @@
             {% if total > 0 %}
             {% for data in menu_datas %}
             <div class="box3_1">
-                <img class="img_detailfood" src="/static/image/{{data.img_path}}" width="18%;"/>
+                <img class="img_detailfood" src="/static/image/{{data.img_path}}" style=" width:190px; height:170px; object-fit: cover;">
                 <div class="menuname"><strong>{{data.menu_name}}</strong></div>
                 <!-- <div class="contents_3">
                     : {{data.menu_price}}원<br />
@@ -124,10 +126,11 @@
                           text-align: left;
                           width: 60%;
                           position: absolute;
-                          left:125pt;
-                          top:30pt;">: {{data.menu_price}}원</p>
-            </div><br />
+                          left:170pt;
+                          top:20pt;">: {{data.menu_price}}원</p>
+            </div>
             {% endfor %}
+
             <!-- 페이지네이션을 위한 코드 시작 -->
             <div class="page-wrap">
                 <div class="page-nation">

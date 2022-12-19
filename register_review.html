@@ -103,14 +103,15 @@
         
         <center><b><label style="text-align: center; font-size: 14.5pt; font-family: 'Noto Sans KR', sans-serif;" for="name">{{data.res_name}}</label></b></center><br><br>
         
+        {% block content %}
         <div class="contents0">
             <br>
-            {% block content %}
+            
             <form method="post" action="/result3" enctype="multipart/form-data">
                 <input type="hidden" name="res_name" value="{{data.res_name}}">
                 <div id="contents1">    
                 	<img id="user_image" src="/static/noimage.jpg" alt="" width="80%" height="87%">
-                	<p><input accept=".jpg" accept=".png" onchange="PreviewImage();" type="file" name="review_img" id="user_profile_img" requried></p>
+                	<p><input accept=".jpg, .png" onchange="PreviewImage();" type="file" name="review_img" id="user_profile_img" requried></p>
             	</div>
                 
                 <div id="contents2">
@@ -142,7 +143,7 @@
                 
                 <div id="contents3">
                     <div style="float: left; width: 25%; height: 70%">
-                        <p><b style="font-size: 13pt;">인원</b></p>
+                        <p><b style="font-size: 13pt;">인원</b><span style="line-height:10%; font-size:10pt;"><br>(필수)</span></p>
                         <input type="checkbox" name="rev_headcount" value="혼자">혼자<br>
                         <input type="checkbox" name="rev_headcount" value="친구">친구<br>
                         <input type="checkbox" name="rev_headcount" value="연인">연인<br/>
@@ -150,13 +151,13 @@
                         <input type="checkbox" name="rev_headcount" value="단체">단체<br/>
                     </div>
                     <div style="float: left; width: 23%; height: 70%">
-                        <p><b style="font-size: 13pt;">양</b></p>
-                        <input type="checkbox" name="rev_amount" value="많음">많음　<br>
-                        <input type="checkbox" name="rev_amount" value="적당함">적당함 <br>
-                        <input type="checkbox" name="rev_amount" value="적음">적음　<br/>
+                        <p><b style="font-size: 13pt;">양</b><span style="line-height:10%; font-size:10pt;"><br>(필수)</span></p>
+                        <input type="checkbox" name="rev_amount" value="양 많음">많음　<br>
+                        <input type="checkbox" name="rev_amount" value="양 적당함">적당함 <br>
+                        <input type="checkbox" name="rev_amount" value="양 적음">적음　<br/>
                     </div>
                     <div style="float: left; width: 23%; height: 70%">
-                        <p><b style="font-size: 13pt;">비건 메뉴</b></p>
+                        <p><b style="font-size: 13pt;">비건 메뉴</b><span style="line-height:10%; font-size:10pt;"><br>(필수)</span></p>
                         <input type="checkbox" name="rev_vegan" value="O">O<br>
                         <input type="checkbox" name="rev_vegan" value="X">X<br>
                     </div>
@@ -168,13 +169,13 @@
                         <input type="checkbox" name="rev_etc_4" value="음식이 맛있음">음식이 맛있음<br>
                         <input type="checkbox" name="rev_etc_5" value="분위기가 좋음">분위기가 좋음<br>
                     </div>
-                    <input type="submit" value="리뷰 등록하기" style="background-color: #738b5f; color:white; height:30px; width:100px; text-align:center;" name="register3">        
+                    <input type="submit"  value="리뷰 등록하기" style="background-color: #738b5f; color:white; height:30px; width:100px; text-align:center;" name="register3">        
                 </div>
             </form>
-            {% endblock content %}
+            
         
         </div>
-
+        {% endblock content %}
         <footer>
           
         </footer>
@@ -189,7 +190,35 @@
                 };
                 // input id 값
                 preview.readAsDataURL(document.getElementById("user_profile_img").files[0]);
-            };
+            }
+            
+            /*
+           function event_click(){
+            
+                if(!$("input:checkbox[name='rev_headcount']").is(":checked")){
+	                alert("[ 양 ] 을 선택해주세요.");
+	                return false;
+                    }
+                if(!$("input:checkbox[name='rev_amount']").is(":checked")){
+	                alert("[ 양 ] 을 선택해주세요.");
+	                return false;
+                    }
+                if(!$("input:checkbox[name='rev_vegan']").is(":checked")){
+	                alert("[ 비건 ] 을 선택해주세요.");
+	                return false;
+                    }
+                if(!$("input:radio[name='rev_time']").is(":checked")){
+	                alert("[ 식사 시간대 ] 를 선택해주세요.");
+                	return false;
+                }
+                else{return true;};
+            
+            }
+            */
+            
+            
+                
+
         </script>
     </body>
 

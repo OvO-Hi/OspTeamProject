@@ -89,15 +89,36 @@
                             max="5"
                         ></progress>
                     </div>
-
+                    
+                    
+                    <div style="
+                                font-size: 11pt;
+                                position: absolute;
+                                left: 125pt;
+                                top: 41pt;
+                                border-radius: 2px / 2px;
+                                background-color: #ebebeb;
+                                width: auto;
+                                height: auto; 
+                                text-align: center;
+                                padding-top: 2pt;
+                                padding-bottom: 3pt;
+                                padding-left:5pt;
+                                padding-right:5pt;
+                                
+                                ">
+                        <b>{{data.rev_time}}</b>에 <b>{{data.rev_price}}</b>원의 <b>{{data.rev_menu}}</b>을(를) 먹었어요
+                    </div>
+                        
+                    
                     <div
                         style="
                             font-size: 12pt;
                             width: 80%;
                             text-align: left;
                             position: absolute;
-                            left: 125pt;
-                            top: 45pt;
+                            left: 126pt;
+                            top: 65pt;
                         "
                     >
                         <!-- css class="contents" 스타일 적용 안 됨 -->
@@ -110,7 +131,15 @@
                             {% if data.rev_headcount != "null" %}
                             <input type="button" onclick="" value="{{data.rev_headcount}}" />
                             {% endif %}
+                            {% if data.rev_amount != "null" %}
+                            <input type="button" onclick="" value="{{data.rev_amount}}" />
+                            {% endif %}
+                            {% if data.rev_vegan == "O" %}
+                            <input type="button" onclick="" value="비건 메뉴" />
+                            {% endif %}
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>

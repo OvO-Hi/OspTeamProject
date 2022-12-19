@@ -29,6 +29,8 @@
         }
 
         .mypage {
+            position: sticky;
+            top: 100px;
             float: right;
             text-align: center;
             font-family: 'Noto Sans KR', sans-serif;
@@ -55,6 +57,10 @@
             padding: 20px 0px;
         }
         .contents_random {
+            text-align: center;
+            margin: auto;
+        }
+        .contents_search{
             text-align: center;
             margin: auto;
         }
@@ -250,13 +256,13 @@
     <div class="contents">
         <div class="searchbar">
             <div class="searchbox">
-                <form method="post" action="/search">
+                <form method="post" action="/search_result">
                     <a style="color: black;">검색</a>
                     <input
                         type="text"
                         name="searchname"
                         style="width: 80%; height: 30px; background-color: white; color: black;"
-                        placeholder="식당이나 메뉴 이름으로 검색하세요."
+                        placeholder="식당 이름으로 검색하세요."
                     />
                     <input type="submit" style="margin-left:5pt;" name="searchbutton" value="검색" />
                 </form>
@@ -280,7 +286,6 @@
                     $('#category option:contains("{{category}}")').prop('selected', true);
                 });
             </script>
-
             <div class="menu">
                 <ul>
                     <li>
@@ -288,32 +293,38 @@
                         <ul id="category" name="category" onchange="location=this.value">
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, category='한식', price='all', area='all', headcount='all')}}"
+                                    href="{{url_for('filter_restaurants', category='한식', price='all', area='all', headcount='all', etc='all', rate='all', page=i)}}"
                                     >한식</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, category='양식', price='all', area='all', headcount='all')}}"
+                                    href="{{url_for('filter_restaurants', category='양식', price='all', area='all', headcount='all', etc='all', rate='all', page=i)}}"
                                     >양식</a
-                                >
+                                ><input type="hidden" name="category" value="양식">
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, category='중식', price='all', area='all', headcount='all')}}"
+                                    href="{{url_for('filter_restaurants', category='중식', price='all', area='all', headcount='all', etc='all', rate='all', page=i)}}"
                                     >중식</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, category='일식', price='all', area='all', headcount='all')}}"
+                                    href="{{url_for('filter_restaurants', category='일식', price='all', area='all', headcount='all', etc='all', rate='all', page=i)}}"
                                     >일식</a
+                                >
+                            </li>
+                                <li>
+                                <a
+                                    href="{{url_for('filter_restaurants', category='세계', price='all', area='all', headcount='all', etc='all', rate='all', page=i)}}"
+                                    >세계</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, category='카페', price='all', area='all', headcount='all')}}"
-                                    >카페</a
+                                    href="{{url_for('filter_restaurants', category='디저트, 커피', price='all', area='all', headcount='all', etc='all', rate='all', page=i)}}"
+                                    >디저트, 커피</a
                                 >
                             </li>
                         </ul>
@@ -324,31 +335,31 @@
                         <ul id="price" name="price" onchange="location=this.value">
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, price='5,000원 이하', category='all', area='all', headcount='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='5,000원 이하', area='all', headcount='all', etc='all', rate='all', page=i)}}"
                                     >5,000원 이하</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, price='5,000원-10,000원', category='all', area='all', headcount='all')}}"
-                                    >10,000원 이하</a
+                                    href="{{url_for('filter_restaurants', category='all', price='5,000원-10,000원', area='all', headcount='all', etc='all', rate='all', page=i)}}"
+                                    >5,000원-10,000원</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, price='10,000원-15,000원', category='all', area='all', headcount='all')}}"
-                                    >15,000원 이하</a
+                                    href="{{url_for('filter_restaurants', category='all', price='10,000원-15,000원', area='all', headcount='all', etc='all', rate='all', page=i)}}"
+                                    >10,000원-15,000원</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, price='15,000원-20,000원', category='all', area='all', headcount='all')}}"
-                                    >20,000원 이하</a
+                                    href="{{url_for('filter_restaurants', category='all', price='15,000원-20,000원', area='all', headcount='all', etc='all', rate='all', page=i)}}"
+                                    >15,000원-20,000원</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, price='20,000원 이상', category='all', area='all', headcount='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='20,000원 이상', area='all', headcount='all', etc='all', rate='all', page=i)}}"
                                     >20,000원 이상</a
                                 >
                             </li>
@@ -360,62 +371,129 @@
                         <ul id="area" name="area" onchange="location=this.value">
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, area='교내', category='all', price='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='교내', headcount='all', etc='all', rate='all', page=i)}}"
                                     >교내</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, area='이대 정문 (이대역-신촌 기차역)', category='all', price='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='이대 정문 (이대역-신촌 기차역)', headcount='all', etc='all', rate='all', page=i)}}"
                                     >정문</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, area='이대 후문 (후문-세브란스)', category='all', price='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='이대 후문 (후문-세브란스)', headcount='all', etc='all', rate='all', page=i)}}"
                                     >후문</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, area='신촌', category='all', price='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='신촌', headcount='all', etc='all', rate='all', page=i)}}"
                                     >신촌</a
                                 >
                             </li>
                         </ul>
                     </li>
+                    
+                    <li>
+                        <a>평점</a>
+                        <ul id="rate" name="rate" onchange="location=this.value">
+                            <li>
+                                <a
+                                   href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='all', rate='높음', page=i)}}"
+                                    >높음
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                   href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='all', rate='중간', page=i)}}"
+                                    >중간
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                   href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='all', rate='낮음', page=i)}}"
+                                    >낮음
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                   href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='all', rate='없음', page=i)}}"
+                                    >없음
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                                      
 
                     <li>
                         <a>인원</a>
                         <ul id="headcount" name="headcount" onchange="location=this.value">
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, headcount='혼자', category='all', price='all', area='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='혼자', etc='all', rate='all', page=i)}}"
                                     >혼자</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, headcount='친구', category='all', price='all', area='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='친구', etc='all', rate='all', page=i)}}"
                                     >친구</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, headcount='연인', category='all', price='all', area='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='연인', etc='all', rate='all', page=i)}}"
                                     >연인</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, headcount='가족', category='all', price='all', area='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='가족', etc='all', rate='all', page=i)}}"
                                     >가족</a
                                 >
                             </li>
                             <li>
                                 <a
-                                    href="{{url_for('list_restaurants', page=i, headcount='단체', category='all', price='all', area='all')}}"
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='단체', etc='all', rate='all', page=i)}}"
                                     >단체</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a>기타</a>
+                        <ul id="etc" name="etc" onchange="location=this.value">
+                            <li>
+                                <a
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='인테리어가 좋음', rate='all', page=i)}}"
+                                    >인테리어가 좋음</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='서비스가 좋음', rate='all', page=i)}}"
+                                    >서비스가 좋음</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='직원이 친절함', rate='all', page=i)}}"
+                                    >직원이 친절함</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='음식이 맛있음', rate='all', page=i)}}"
+                                    >음식이 맛있음</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{url_for('filter_restaurants', category='all', price='all', area='all', headcount='all', etc='분위기가 좋음', rate='all', page=i)}}"
+                                    >분위기가 좋음</a
                                 >
                             </li>
                         </ul>
@@ -424,19 +502,6 @@
                     <li style="float: right;">
                         <a href="/random_res">무작위추천</a>
                     </li>
-                    <!-- {% if session['id'] %}
-                    <li style="float: right;">
-                            <a href="/logout">
-                            로그아웃
-                            </a>
-                    </li>
-                    <li style="float: right;">
-                        <b>{{session['id']}}님</b>
-                    </li>
-                    
-                    {% else %}
-                    <li style="float: right;" onclick="location.href='login.html'" name="login" value="로그인" style="color: #FFFFFF;"><a href="login.html">로그인</a></li>
-                    {% endif %} -->
                 </ul>
             </div>
         </nav>

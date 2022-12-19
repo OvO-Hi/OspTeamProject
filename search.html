@@ -1,19 +1,43 @@
 {% extends "index.html" %}
 
 {% block section %}
-{% if total > 0 %}
-<div style="float: left; width: 25%;">
-    <article>
-        <a href="/view_detail/{{ data['res_name'] }}/">
-            <img src="/static/image/{{ data['img_path'] }}" style="width: 260px; height: 270px; object-fit: cover;"></a>
-            <p>이름:  {{ data['res_name'] }}</p>       
-    </article>
-</div>
-
-{% else %}
 <p class="ranking">
     검색 결과
 </p>
+{% if total > 0 %}
+<br>
+<div class="contents_search">
+    {% for data in datas %}
+    <div style="float: left; width: 25%;">
+        <div style="text-align: center;">
+            <p/>
+            <a href="/view_detail/{{ data['res_name'] }}/">
+            <img src="/static/image/{{ data['img_path'] }}" style="width: 260px; height: 270px; object-fit: cover;">
+            </a>
+            <p>    {{ data['res_name'] }}</p>
+        </div>     
+    </div>
+    {% endfor %}
+    
+    <!-- 페이지네이션을 위한 코드 시작 -->
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <form method="post" action="/search_paging">
+    <div class ="page-wrap">
+        <div class="page-nation">
+            <ul>
+                <li>
+                    {% for i in range(page_count)%}
+                    <a href="{{url_for('view_search', searchname=searchname, page=i)}}" color="black">{{i+1}}</a>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </div>
+    </form>
+</div>
+
+{% else %}
+
 <div style="margin: 20px;">
     <p style="text-align: center;"><br />검색 결과가 없습니다.<br /><br /></p>
     <div
